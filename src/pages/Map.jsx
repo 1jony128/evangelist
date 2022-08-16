@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import Dialog from '../components/Dialog/Dialog';
 import Form from '../components/Form/Form';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 function Map() {
 
@@ -13,6 +14,9 @@ function Map() {
     const [selectId, setSelectId] = useState();
     const [coords, setCoords] = useState()
 
+
+    const { height, width } = useWindowDimensions();
+    console.log(height, width)
     useEffect(() => {
         if(points.length){
             objectManager.removeAll();
@@ -114,7 +118,7 @@ function Map() {
 
     return (
         <div className='map-container'>
-            <div id="map-id" style={{width: 1000, height: 1100}}></div>
+            <div id="map-id" style={{width: width, height: height}}></div>
             {coords && 
                 <Form 
                     coords={coords}
