@@ -1,29 +1,37 @@
-import { Button } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, FC } from 'react'
+import { Map } from 'typescript';
+import { ObjectManager } from 'yandex-maps';
 import Dialog from '../components/Dialog/Dialog';
 import Form from '../components/Form/Form';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 
-function Map() {
+interface PropsMap {
 
-    const [map, setMap] = useState(); // карта
-    const [geo, setGeo] = useState(); 
-    const [center, setCenter] = useState(); 
-    const [objectManager, setObjectManager] = useState(); 
+}
+
+const MapWrapper:FC<PropsMap> = () => {
+
+    const [map, setMap] = useState<ymaps.Map | null>(null); // карта
+    const [geo, setGeo] = useState<number[][]>(); 
+    const [center, setCenter] = useState<number[]>(); 
+    const [objectManager, setObjectManager] = useState<ObjectManager | null>(null); 
     const [points, setPoints] = useState([]);
-    const [selectId, setSelectId] = useState();
+    const [selectId, setSelectId] = useState<string | undefined>();
     const [coords, setCoords] = useState()
 
 
     const { height, width } = useWindowDimensions();
-    console.log(height, width)
+
     useEffect(() => {
         if(points.length){
-            objectManager.removeAll();
-            objectManager.add({
-                "type": "FeatureCollection",
-                "features": points
-            })
+            if(objectManager){
+                objectManager.removeAll();
+                objectManager.add({
+                    "type": "FeatureCollection",
+                    "features": points
+                })
+            }
+           
         }
     },[points])
 
@@ -36,7 +44,7 @@ function Map() {
     }, [coords])
 
     useEffect(() => {
-        const loadScript = (src, onLoad) => {
+        const loadScript = (src: string, onLoad: any) => {
             const script = document.createElement("script");
             script.src = src;
             script.async = true;
@@ -51,6 +59,7 @@ function Map() {
                     center: [50.29693652129269, 127.53487760357913],
                     zoom: 13,
                 }, {
+                    // @ts-ignore
                     searchControlProvider: 'yandex#search'
                 });
 
@@ -62,6 +71,7 @@ function Map() {
                     clusterIconContentLayout: window.ymaps.templateLayoutFactory.createClass(
                         '<div style=font-size: 33px; ">{{ properties.geoObjects.length }}</div>'
                     ),
+                    // @ts-ignore
                     clusterIconPieChartRadius: 17,
                     clusterIconPieChartCoreRadius: 13,
                     clusterIconPieChartStrokeWidth: 0,
@@ -73,6 +83,7 @@ function Map() {
                 myMap.geoObjects.add(objectManager);
     
             setMap(myMap);
+            // @ts-ignore
             setGeo(myMap.getBounds());     
             
             setObjectManager(objectManager)
@@ -141,4 +152,4 @@ function Map() {
     )
 }
 
-export default Map
+export default MapWrapper

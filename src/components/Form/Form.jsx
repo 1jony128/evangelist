@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material'
+import { Button, TextField, Typography } from '@mui/material'
 import React from 'react'
 import useInput from '../../hooks/useInput'
 
@@ -40,6 +40,11 @@ function Form({coords, points, setPoints, setCoords}) {
 
     return (
         <div className='form'>
+            <div className="row">
+            <Typography variant="h4" gutterBottom>
+                Создание метки
+            </Typography>
+            </div>
             <div className="row">
                 <TextField 
                     label="имя" 
