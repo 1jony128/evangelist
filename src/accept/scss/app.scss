@@ -60,3 +60,17 @@ body{
   bottom: 100px;
 
 }
+
+.preload-title{
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  img{
+    width: 100px;
+  }
+  h1{
+    text-align: center;
+  }
+}
