@@ -1,20 +1,22 @@
 import { Button, TextField } from "@mui/material";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
+import { alert, alertText } from "../../helpers/alertText";
 import useInput from "../../hooks/useInput";
 import InputGroup from "./InputGroup";
 
 interface LoginLayoutProps {
-    
+    setAuth: Dispatch<SetStateAction<any>>
 }
  
-const LoginLayout: FC<LoginLayoutProps> = () => {
+const LoginLayout: FC<LoginLayoutProps> = ({setAuth}) => {
     
     const name = useInput("");
     const password = useInput("");
     const key_access = useInput("");
 
     const onLogin = () => {
-        
+        setAuth(true)
+        alert(alertText.login, "success")
     }
 
     const onReg = () => {

@@ -9,13 +9,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Login from './pages/Login';
+import { ToastContainer } from 'react-toastify';
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { alert, alertText } from './helpers/alertText';
 
 function App() {
 
   const [auth, setAuth] = useState()
- 
 
   return (
     <div className="App">
@@ -27,12 +28,12 @@ function App() {
         </Routes>
         :
         <Routes>       
-          <Route path='/*' element={<Login />}/>
+          <Route path='/*' element={<Login setAuth={setAuth}/>}/>
         </Routes>
       }
         
       </BrowserRouter>
-       
+      <ToastContainer />
     </div>
   );
 }

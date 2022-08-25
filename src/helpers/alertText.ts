@@ -17,15 +17,12 @@ export const alert = (text: alertText | string, type: toastType ) => {
 }
 
 export enum alertText {
-    emptyCategory = "Введите название категории!",
-    addCategory = "Категория успешно создана!",
-    emptyTask = "Введите название задачи!",
-    addTask = "Задача успешно создана!",
-    removeTask = "Задача удалена!",
-    removeCategory = "Категория удалена!",
-    inWorkTask = "Задача взята в работу.",
-    outWorkTask = "Задача перемещна в заблокированные.",
-    doneTask = "Задача выполнена!"
+    login = "Успешная авторизация",
+    logout = "Вы вышли из системы",
+    emptyField = "Заполните все поля!",
+    addPoint = "Метка успешно создана!",
+    editPoint = "Метка успешно изменена!",
+    removePoint = "Метка успешно удалена!"
 }
 
 type toastType = "success" | "error" | "info"

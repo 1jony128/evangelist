@@ -4,10 +4,13 @@ import { ObjectManager } from 'yandex-maps';
 import Dialog from '../components/Dialog/Dialog';
 import Form from '../components/Form/Form';
 import useWindowDimensions from '../hooks/useWindowDimensions';
+import { IPoint } from '../models/point';
 
 interface PropsMap {
 
 }
+
+
 
 const MapWrapper:FC<PropsMap> = () => {
 
@@ -15,10 +18,11 @@ const MapWrapper:FC<PropsMap> = () => {
     const [geo, setGeo] = useState<number[][]>(); 
     const [center, setCenter] = useState<number[]>(); 
     const [objectManager, setObjectManager] = useState<ObjectManager | null>(null); 
-    const [points, setPoints] = useState([]);
+    const [points, setPoints] = useState<IPoint[]>([]);
     const [selectId, setSelectId] = useState<string | undefined>();
     const [coords, setCoords] = useState()
-
+    const [mode, setMode] = useState<"create" | "edit">("create");
+    const [currentPoint, setCurrentPoint] = useState<IPoint | null>(null)
 
     const { height, width } = useWindowDimensions();
 
@@ -36,11 +40,17 @@ const MapWrapper:FC<PropsMap> = () => {
     },[points])
 
     useEffect(() => {
-      console.log(selectId)
+    //   console.log(selectId)
+    if(points.length > 0){
+        const current = points.find((item: IPoint) => item.id === selectId)
+        if(current)
+        setCurrentPoint(current)
+    }
+    
     }, [selectId])
 
     useEffect(() => {
-      console.log(coords)
+    //   console.log(coords)
     }, [coords])
 
     useEffect(() => {
@@ -136,16 +146,22 @@ const MapWrapper:FC<PropsMap> = () => {
                     setPoints={setPoints}
                     points={points}
                     setCoords={setCoords}
+                    mode={mode}
+                    setMode={setMode}
+                    currentPoint={currentPoint}
                 />
             }
             {
                 selectId &&
                 <Dialog 
+                    setMode={setMode}
                     selectId={selectId}
                     setSelectId={setSelectId}
                     setPoints={setPoints}
                     points={points}
                     setCoords={setCoords}
+                    setCurrentPoint={setCurrentPoint}
+                    currentPoint={currentPoint}
                 />
             }
         </div>

@@ -1,15 +1,66 @@
 import { Button, TextField, Typography } from '@mui/material'
-import React from 'react'
+import React, { Dispatch, FC, SetStateAction, useEffect } from 'react'
+import { alert, alertText } from '../../helpers/alertText'
 import useInput from '../../hooks/useInput'
+import { IPoint } from '../../models/point'
 
-function Form({coords, points, setPoints, setCoords}) {
 
-    const name = useInput()
-    const street = useInput()
-    const entrance = useInput()
-    const countNewspaper = useInput()
+interface IForm {
+    coords: [number, number]
+    points: IPoint[],
+    setPoints: Dispatch<SetStateAction<any>>,
+    setCoords: Dispatch<SetStateAction<any>>,
+    mode: "create" | "edit",
+    setMode: Dispatch<SetStateAction<any>>,
+    currentPoint: IPoint | null
+}
+
+const Form: FC<IForm> = ({coords, points, setPoints, setCoords, mode, setMode, currentPoint}) => {
+
+    const name = useInput("")
+    const street = useInput("")
+    const entrance = useInput("")
+    const countNewspaper = useInput("")
+
+    useEffect(() => {
+        if(mode === "edit" && currentPoint){
+            console.log(currentPoint)
+            const current = currentPoint.properties
+
+            name.setValue(current.name)
+            street.setValue(current.street)
+            entrance.setValue(current.entrance)
+            countNewspaper.setValue(current.countNewspaper)
+            
+        }
+    }, [mode, points, currentPoint]);   
 
     const onSubmit = () => {
+        if(mode === "edit"){
+            const clonePoint = JSON.parse(JSON.stringify(currentPoint))
+            // console.log(clonePoint)
+            const prop = {
+                name: name.value,
+                street: street.value,
+                entrance: entrance.value,
+                countNewspaper: countNewspaper.value
+            }
+            clonePoint.properties = prop
+            const clonePoints = JSON.parse(JSON.stringify(points))
+            const newPoints = clonePoints.map((item: IPoint) => {
+                if(item.id === clonePoint.id){
+                    return clonePoint
+                } else {
+                    return item
+                }
+            })
+            setPoints(newPoints)
+            setCoords(null)
+            setMode("create")
+            alert(alertText.editPoint, "success")
+            return
+        }
+        console.log("first")
         const point = {
             type: "Feature",
             id: (new Date()).getTime(), 
@@ -22,27 +73,26 @@ function Form({coords, points, setPoints, setCoords}) {
                 "street": street.value,
                 "entrance": entrance.value,
                 "countNewspaper": countNewspaper.value,
-                "balloonContent": `<div>Раздавал ${name.value},
-                кол-во ${countNewspaper.value}  газет.
-                Адрес: ${street.value} Подъезды: ${entrance.value}
-                </div>`,
             }
         }
 
         console.log(point)
         setPoints([...points, point])
         setCoords(null)
+        setMode("create")
+        alert(alertText.addPoint, "success")
     }
 
     const onClose = () => {
         setCoords(null)
+        setMode("create")
     }
 
     return (
         <div className='form'>
             <div className="row">
             <Typography variant="h4" gutterBottom>
-                Создание метки
+                {(mode === "edit") ? "Редактирование метки" : "Создание метки"}      
             </Typography>
             </div>
             <div className="row">
@@ -90,7 +140,7 @@ function Form({coords, points, setPoints, setCoords}) {
                     className='pr10'
                     onClick={onSubmit}
                 >
-                    Сохранить
+                    {(mode === "edit") ? "Сохранить" : "Создать"}  
                 </Button>
                 <Button 
                     variant="outlined"

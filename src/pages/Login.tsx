@@ -1,18 +1,18 @@
 import { Typography } from "@mui/material";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import LoginHeader from "../components/Login/LoginHeader";
 
 import LoginLayout from "../components/Login/LoginLayout";
 
 interface LoginProps {
-    
+    setAuth: Dispatch<SetStateAction<any>>
 }
  
-const Login: FC<LoginProps> = () => {
+const Login: FC<LoginProps> = ({setAuth}) => {
     return ( 
         <div className="wrapper">
             <LoginHeader />
-            <LoginLayout />
+            <LoginLayout setAuth={setAuth}/>
         </div>
      );
 }
