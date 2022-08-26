@@ -73,9 +73,13 @@ const Form: FC<IForm> = ({coords, points, setPoints, setCoords, mode, setMode, c
                 "street": street.value,
                 "entrance": entrance.value,
                 "countNewspaper": countNewspaper.value,
+            },
+            options: {
+                preset: 'islands#blueCircleDotIconWithCaption'
             }
+            
         }
-
+        
         console.log(point)
         setPoints([...points, point])
         setCoords(null)

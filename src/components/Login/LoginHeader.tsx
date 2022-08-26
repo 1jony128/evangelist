@@ -8,7 +8,7 @@ interface LoginHeaderProps {
 const LoginHeader: FC<LoginHeaderProps> = () => {
     return ( 
         <>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h5" gutterBottom>
             Благовестник
         </Typography>
         <PreloadIcon />

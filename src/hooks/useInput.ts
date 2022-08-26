@@ -7,7 +7,7 @@ export interface IInput{
     setError: Dispatch<SetStateAction<any>>,
     setHover: Dispatch<SetStateAction<any>>,
     setLabel: Dispatch<SetStateAction<any>>,
-    error: null | string,
+    error: boolean | undefined,
     hover: boolean
     onBlur: () => void
     onFocus: () => void
@@ -19,7 +19,7 @@ const useInput = (initialValue: string, placeholderInit?: string): IInput => {
     const [value, setValue] = useState(initialValue);
     const [placeholder, setPlaceholder]  = useState(placeholderInit || "");
     const [label, setLabel]  = useState("");
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<boolean | undefined>(undefined);
     const [hover, setHover] = useState(false);
     const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value)

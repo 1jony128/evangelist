@@ -43,7 +43,20 @@ const MapWrapper:FC<PropsMap> = () => {
     //   console.log(selectId)
     if(points.length > 0){
         const current = points.find((item: IPoint) => item.id === selectId)
-        if(current)
+        if(!current) return
+
+        const clonePoints = JSON.parse(JSON.stringify(points))
+        current.options.preset = 'islands#greenCircleDotIconWithCaption'
+        const newPoints = clonePoints.map((item: IPoint) => {
+            if(item.id === selectId){
+                return current
+            } else {
+                item.options.preset = 'islands#blueCircleDotIconWithCaption'
+                return item
+            }
+        })
+        setPoints([])
+        setPoints(newPoints)
         setCurrentPoint(current)
     }
     
@@ -91,12 +104,13 @@ const MapWrapper:FC<PropsMap> = () => {
                 objectManager.clusters.options.set('preset', 'islands#greenClusterIcons');
 
                 myMap.geoObjects.add(objectManager);
-    
-            setMap(myMap);
-            // @ts-ignore
-            setGeo(myMap.getBounds());     
-            
-            setObjectManager(objectManager)
+                myMap.options.set('minZoom', 12);
+                myMap.options.set('maxZoom', 20);
+                setMap(myMap);
+                // @ts-ignore
+                setGeo(myMap.getBounds());     
+                
+                setObjectManager(objectManager)
             }
         };
         

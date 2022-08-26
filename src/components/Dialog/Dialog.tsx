@@ -45,7 +45,7 @@ const Dialog:FC<IDialog> = ({
     }
 
     const onClose = () => {
-
+        setSelectId(null)
     }
     if(currentPoint){
         return (

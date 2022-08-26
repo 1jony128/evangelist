@@ -18,6 +18,7 @@ export const alert = (text: alertText | string, type: toastType ) => {
 
 export enum alertText {
     login = "Успешная авторизация",
+    reg = "Успешная регистрация, теперь авторизируйтесь",
     logout = "Вы вышли из системы",
     emptyField = "Заполните все поля!",
     addPoint = "Метка успешно создана!",

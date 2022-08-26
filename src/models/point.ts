@@ -16,6 +16,9 @@ export interface IPoint {
         // кол-во ${countNewspaper.value}  газет.
         // Адрес: ${street.value} Подъезды: ${entrance.value}
         // </div>`,
+    },
+    options: {
+        preset: string
     }
 }
 
