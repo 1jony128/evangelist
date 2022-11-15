@@ -9,6 +9,7 @@ import {getAuth} from 'entities/FormLogin/models/selectors/login';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {ReactNode} from 'react';
 import {MainPage} from 'pages/MainPage';
+import ProfilePage from 'pages/ProfilePage/ui/ProfilePage';
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
                         <Suspense fallback={<>...</>}>
                             <Routes>
                                 <Route path='/*' element={<MainPage />}/>
+                                <Route path='/profile' element={<ProfilePage />}/>
                             </Routes>
                         </Suspense>
                         :

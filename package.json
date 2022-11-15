@@ -17,6 +17,8 @@
     "@types/react-dom": "^18.0.5",
     "@types/yandex-maps": "^2.1.26",
     "antd": "^4.24.2",
+    "antd-mobile": "^5.25.1",
+    "antd-mobile-icons": "^0.3.0",
     "axios": "^0.25.0",
     "node-sass": "^6.0.0",
     "react": "^18.2.0",

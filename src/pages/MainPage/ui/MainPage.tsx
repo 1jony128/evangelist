@@ -1,6 +1,6 @@
-import cls from "./MainPage.module.scss"
-import {classNames} from "shared/lib/classNames";
 import {FC} from "react";
+import MainLayout from 'widgets/MainLayout/ui/MainLayout';
+import Layout from 'pages/Layout/Layout';
 
 interface MainPageProps {
     className?: string
@@ -8,9 +8,9 @@ interface MainPageProps {
 
 const MainPage: FC<MainPageProps> = ({className}) => {
     return (
-        <div className={classNames(cls.MainPage, {}, [className])}>
-                map
-        </div>
+        <Layout>
+            <MainLayout />
+        </Layout>
     );
 };
 
