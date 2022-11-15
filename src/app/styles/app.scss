@@ -1,0 +1,22 @@
+@import "variales";
+@import url("https://allfont.net/allfont.css?fonts=izhitsa-cyrillic");
+body{
+  overflow: hidden;
+  font-family: 'Izhitsa Cyrillic', arial;
+}
+
+*{
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+#root{
+  width: 100%;
+  height: 100%;
+}
+
+.app{
+  width: 100vw;
+  height: 100vh;
+}
