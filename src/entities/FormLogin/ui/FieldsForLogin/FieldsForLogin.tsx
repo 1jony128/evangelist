@@ -2,7 +2,6 @@ import cls from "./FieldsForLogin.module.scss"
 import {classNames} from "shared/lib/classNames";
 import {FC} from "react";
 import Header from 'entities/FormLogin/ui/Header/Header';
-import {Button, Input} from 'antd';
 import {useAppDispatch} from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {loginActions} from 'entities/FormLogin/models/slices/LoginSlice';
 import {alert, alertText} from 'shared/lib/alerts';
@@ -14,6 +13,7 @@ import {
     getPassword,
     getRepeatPassword
 } from 'entities/FormLogin/models/selectors/login';
+import {Button, Input} from 'antd';
 
 interface FieldsForLoginProps {
     className?: string

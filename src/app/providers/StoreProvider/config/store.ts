@@ -5,6 +5,7 @@ import {CombinedState} from 'redux';
 import {LoginSlice} from 'entities/FormLogin';
 import {$api} from 'shared/api/api';
 import {ProfileSlice} from 'entities/FormProfile/models/slices/ProfileSlice';
+import {MapSlice} from 'widgets/MainLayout/Map/models/slices/MapSlice';
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -13,7 +14,8 @@ export function createReduxStore(
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         login: LoginSlice.reducer,
-        profile: ProfileSlice.reducer
+        profile: ProfileSlice.reducer,
+        map: MapSlice.reducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

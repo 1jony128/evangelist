@@ -5,10 +5,12 @@ import { CombinedState } from 'redux';
 import { AxiosInstance } from 'axios';
 import {LoginShema} from 'entities/FormLogin/models/types/loginShema';
 import {ProfileShema} from 'entities/FormProfile/models/types/profileShema';
+import {MapShema} from 'widgets/MainLayout/Map/models/types/MapShema';
 
 export interface StateSchema {
     login: LoginShema,
     profile: ProfileShema
+    map: MapShema
 }
 
 export type StateSchemaKey = keyof StateSchema;

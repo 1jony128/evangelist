@@ -1,0 +1,17 @@
+.FormSavePoint{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.close{
+  width: 20px;
+  height: 20px;
+}

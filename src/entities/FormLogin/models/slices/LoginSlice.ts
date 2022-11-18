@@ -9,7 +9,7 @@ const initialState: LoginShema = {
     login: "",
     password: "",
     repeat_password: "",
-    auth: false
+    auth: true
 };
 
 export const LoginSlice = createSlice({

@@ -10,6 +10,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {ReactNode} from 'react';
 import {MainPage} from 'pages/MainPage';
 import ProfilePage from 'pages/ProfilePage/ui/ProfilePage';
+import SettingPage from 'pages/SettingPage/ui/SettingPage';
 
 const App = () => {
 
@@ -24,6 +25,7 @@ const App = () => {
                             <Routes>
                                 <Route path='/*' element={<MainPage />}/>
                                 <Route path='/profile' element={<ProfilePage />}/>
+                                <Route path='/setting' element={<SettingPage />}/>
                             </Routes>
                         </Suspense>
                         :

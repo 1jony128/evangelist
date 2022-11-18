@@ -16,7 +16,15 @@ body{
   height: 100%;
 }
 
+#preload{
+  display: none !important;
+}
+
 .app{
   width: 100vw;
   height: 100vh;
+}
+
+.ymaps-2-1-79-map-copyrights-promo, .ymaps-2-1-79-copyright__wrap{
+  display: none !important;
 }
