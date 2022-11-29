@@ -9,9 +9,25 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  .close{
+    width: 20px;
+    height: 20px;
+  }
 }
 
-.close{
-  width: 20px;
-  height: 20px;
+.content{
+  margin-top: 40px;
+  .input{
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--mutedDark);
+  }
 }
+
+.footer{
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

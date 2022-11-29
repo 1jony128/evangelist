@@ -1,19 +1,16 @@
 import cls from "./FieldsForLogin.module.scss"
 import {classNames} from "shared/lib/classNames";
 import {FC} from "react";
-import Header from 'entities/FormLogin/ui/Header/Header';
 import {useAppDispatch} from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {loginActions} from 'entities/FormLogin/models/slices/LoginSlice';
 import {alert, alertText} from 'shared/lib/alerts';
 import {useSelector} from 'react-redux';
 import {
-    getAccessKey,
     getLogin,
-    getName,
     getPassword,
-    getRepeatPassword
 } from 'entities/FormLogin/models/selectors/login';
 import {Button, Input} from 'antd';
+import {Header} from 'entities/FormLogin/ui/Header';
 
 interface FieldsForLoginProps {
     className?: string

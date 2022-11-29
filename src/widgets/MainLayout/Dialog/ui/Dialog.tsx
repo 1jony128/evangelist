@@ -8,6 +8,7 @@ import {Button} from 'antd';
 import {ObjectManager} from 'yandex-maps';
 
 import {FormSavePoint} from 'features/FormSavePoint';
+import {CloseOutline} from 'antd-mobile-icons';
 
 interface DialogProps {
     className?: string
@@ -49,6 +50,10 @@ const Dialog: FC<DialogProps> = ({className, objectManager, map}) => {
         setShow(!show)
     }
 
+    const onClose = () => {
+
+    }
+
     if(streetData.length > 0)
     return (
         <div
@@ -56,9 +61,10 @@ const Dialog: FC<DialogProps> = ({className, objectManager, map}) => {
         >
             {
                 show
-                ? <FormSavePoint onClose={onShow}/>
+                ? <FormSavePoint data={streetData[0]}onClose={onShow}/>
                 :
                     <>
+                        <CloseOutline className={cls.close} onClick={onClose}/>
                         <Title level={4} className={cls.address}>
                             {`ул. `}  {streetData[0].data.street}, {`д. `}{streetData[0].data.house}
                         </Title>
