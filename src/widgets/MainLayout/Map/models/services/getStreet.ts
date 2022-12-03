@@ -25,7 +25,7 @@ export const getStreetData = createAsyncThunk<
         try {
             const response = await  extra.api.post(
                 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address',
-                {"lat": formData[0], "lon": formData[1], "radius_meters": 20}
+                {"lat": formData[0], "lon": formData[1], "radius_meters": 10}
             )
 
             if (!response.data) {

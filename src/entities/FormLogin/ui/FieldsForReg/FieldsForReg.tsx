@@ -1,6 +1,6 @@
 import cls from './FieldsForReg.module.scss'
 import {classNames} from 'shared/lib/classNames';
-import {FC} from 'react';
+import {FC, useEffect} from 'react';
 import Header from 'entities/FormLogin/ui/Header/Header';
 import {Button, Input} from 'antd';
 import {useAppDispatch} from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -8,13 +8,14 @@ import {loginActions} from 'entities/FormLogin/models/slices/LoginSlice';
 import {useSelector} from 'react-redux';
 import {
     getAccessKey,
+    getError,
     getLogin,
     getName,
     getPassword,
     getRepeatPassword
 } from 'entities/FormLogin/models/selectors/login';
 import {alert, alertText} from 'shared/lib/alerts';
-import {ToastContainer} from 'react-toastify';
+import {registrationUser} from 'entities/FormLogin/models/services/registrationUser';
 
 interface FieldsForRegProps {
     className?: string
@@ -29,6 +30,7 @@ const FieldsForReg: FC<FieldsForRegProps> = ({className}) => {
     const accessKey = useSelector(getAccessKey)
     const password = useSelector(getPassword)
     const repeatPassword = useSelector(getRepeatPassword)
+    const error = useSelector(getError)
 
     const onLogin = () => {
         dispatch(loginActions.changeIsRegistration(false))
@@ -71,10 +73,11 @@ const FieldsForReg: FC<FieldsForRegProps> = ({className}) => {
 
     const onSubmit = () => {
         if(validation()) return
-        alert(alertText.successReg, "success")
-        dispatch(loginActions.changeIsRegistration(false))
+        dispatch(registrationUser({
+            email: login,
+            password: password
+        }))
     }
-
     return (
         <div className={classNames(cls.FieldsForReg, {}, [className])}>
             <Header title={"Регистрация"}/>

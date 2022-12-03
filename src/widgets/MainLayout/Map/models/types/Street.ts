@@ -76,7 +76,7 @@ export interface Street {
         "room_type_full": null,
         "room": null,
         "postal_box": null,
-        "fias_id": "afe4f0ef-3661-43ac-abdd-8191af5de91f",
+        "fias_id": string,
         "fias_code": null,
         "fias_level": "8",
         "fias_actuality_state": "0",

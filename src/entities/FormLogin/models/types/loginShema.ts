@@ -8,4 +8,7 @@ export  interface LoginShema {
     access_key: string,
     isRegistration: boolean
     auth: boolean
+    token: string | null
+    error: string | undefined
+    loading: boolean
 }

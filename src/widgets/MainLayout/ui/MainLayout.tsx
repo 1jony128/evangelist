@@ -16,7 +16,7 @@ const MainLayout: FC<MainLayoutProps> = ({className}) => {
     return (
         <div className={classNames(cls.MainLayout, {}, [className])}>
            <Map  map={map} objectManager={objectManager}/>
-            <Dialog map={map} objectManager={objectManager}/>
+           <Dialog map={map} objectManager={objectManager}/>
         </div>
     );
 };

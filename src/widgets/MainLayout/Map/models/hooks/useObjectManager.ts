@@ -25,7 +25,10 @@ const useObjectManager = ({objectManager, map}: useObjectManagerProps) => {
                     "features": points
                 })
             }
-
+        } else {
+            if(objectManager) {
+                objectManager.removeAll();
+            }
         }
     }, [points, objectManager])
 

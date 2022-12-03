@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {LoginShema} from 'entities/FormLogin/models/types/loginShema';
 import {Form} from 'entities/FormLogin/models/types/form';
+import {registrationUser} from 'entities/FormLogin/models/services/registrationUser';
+import {loginUser} from 'entities/FormLogin/models/services/loginUser';
+import {isAuth} from 'entities/FormLogin/models/services/isAuth';
 
 const initialState: LoginShema = {
     isRegistration: true,
@@ -9,11 +12,14 @@ const initialState: LoginShema = {
     login: "",
     password: "",
     repeat_password: "",
-    auth: false
+    auth: false,
+    token: null,
+    error: undefined,
+    loading: false
 };
 
 export const LoginSlice = createSlice({
-    name: 'profile',
+    name: 'login',
     initialState,
     reducers: {
         changeIsRegistration(state, {payload}: PayloadAction<boolean>){
@@ -25,8 +31,39 @@ export const LoginSlice = createSlice({
         },
         loginSuccess(state){
             state.auth = true
+        },
+        setToken(state, {payload}: PayloadAction<string>){
+            state.token = payload
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(registrationUser.pending, (state) => {
+                state.error = undefined;
+                state.loading = true;
+            })
+            .addCase(registrationUser.fulfilled, (state) => {
+                state.loading = false;
+                state.auth = true
+            })
+            .addCase(registrationUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            });
+        builder
+            .addCase(loginUser.pending, (state) => {
+                state.error = undefined;
+                state.loading = true;
+            })
+            .addCase(loginUser.fulfilled, (state) => {
+                state.loading = false;
+                state.auth = true
+            })
+            .addCase(loginUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            });
+    },
 });
 
 // Action creators are generated for each case reducer function

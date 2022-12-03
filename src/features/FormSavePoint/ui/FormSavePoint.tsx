@@ -33,6 +33,10 @@ const FormSavePoint: FC<FormSavePointProps> = ({className, onClose, data}) => {
                     value={data.value}
                     className={cls.input}
                 />
+                <Input
+                    value={data.value}
+                    className={cls.input}
+                />
             </div>
             <div className={cls.footer}>
                 <Button

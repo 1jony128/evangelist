@@ -3,9 +3,9 @@ export interface IPoint {
     id: string,
     geometry: {
         type: string,
-        coordinates: [number, number]
+        coordinates: number[]
     } ,
-    properties:  {
+    properties?:  {
         "name": string,
         "street": string,
         "entrance": string,
@@ -15,7 +15,7 @@ export interface IPoint {
         // Адрес: ${street.value} Подъезды: ${entrance.value}
         // </div>`,
     },
-    options: {
+    options?: {
         preset: string
     }
 }

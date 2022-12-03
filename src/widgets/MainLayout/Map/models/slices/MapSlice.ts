@@ -28,8 +28,11 @@ export const MapSlice = createSlice({
         setTouchCoords(state, {payload}: PayloadAction<number[]>){
             state.coordinates.touchCoords = payload
         },
-        setPoints(state, {payload}: PayloadAction<IPoint[]>){
-            state.points = payload
+        setPoints(state, {payload}: PayloadAction<IPoint>){
+            state.points = [ ...state.points ,payload]
+        },
+        removePoint(state, {payload}: PayloadAction<string>){
+            state.points = state.points.filter(item => item.id !== payload)
         },
         setSelectPoint(state, {payload}: PayloadAction<string>){
             state.selectPoint = payload

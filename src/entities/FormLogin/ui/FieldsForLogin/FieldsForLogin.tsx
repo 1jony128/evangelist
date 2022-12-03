@@ -11,6 +11,8 @@ import {
 } from 'entities/FormLogin/models/selectors/login';
 import {Button, Input} from 'antd';
 import {Header} from 'entities/FormLogin/ui/Header';
+import {registrationUser} from 'entities/FormLogin/models/services/registrationUser';
+import {loginUser} from 'entities/FormLogin/models/services/loginUser';
 
 interface FieldsForLoginProps {
     className?: string
@@ -50,8 +52,10 @@ const FieldsForLogin: FC<FieldsForLoginProps> = ({className}) => {
 
     const onSubmit = () => {
         if(validation()) return
-        dispatch(loginActions.loginSuccess())
-        alert(alertText.successLogin, "success")
+        dispatch(loginUser({
+            email: login,
+            password: password
+        }))
     }
     return (
         <div className={classNames(cls.FieldsForLogin, {}, [className])}>
