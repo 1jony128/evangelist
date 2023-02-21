@@ -75,6 +75,7 @@ const AuthByEmail: FC<AuthByEmailProps> = ({className}) => {
               type={showPassword ? 'text' : 'password'}
               value={password.value}
               onChange={password.onChange}
+              onClick={handleClickShowPassword}
             />
           </HStack>
           <Loader active={isLoading}/>
