@@ -1,0 +1,18 @@
+.Navbar{
+  border-top: 1px solid var(--mutedDark);
+  padding: 0 20px;
+}
+
+.Button{
+  flex: 1;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active{
+  border-top: 2px solid var(--blue);
+  color: #2b6cb0;
+  height: 100%;
+}

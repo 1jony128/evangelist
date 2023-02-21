@@ -1,0 +1,30 @@
+.DialogPoint{
+  position: fixed;
+  top: calc(50% - 180px);
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--mutedDark);
+  -webkit-box-shadow: 6px 7px 44px 10px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 6px 7px 44px 10px rgba(34, 60, 80, 0.2);
+  box-shadow: 6px 7px 44px 10px rgba(34, 60, 80, 0.2);
+}
+
+.triangle{
+  position: fixed;
+  margin-top: -33px;
+  width: 0;
+  height: 0;
+  border-width: 0 12.5px 21.7px 12.5px;
+  border-color: transparent transparent #FFFFFF transparent;
+  border-style: solid;
+  transform: rotate(180deg);
+}
+
+.Background{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
