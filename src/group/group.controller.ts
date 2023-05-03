@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from "@nestjs/common";
 import { GroupService } from './group.service';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
-import { UserGroupDto } from "src/group/dto/user-to-group.dto";
+import { UserGroupDto } from "group/dto/user-to-group.dto";
+import { RolesGuard } from "auth/roles.guard";
 
 @Controller('group')
 export class GroupController {
@@ -19,27 +20,30 @@ export class GroupController {
     return this.groupService.addUserToGroup(dto);
   }
 
+  @UseGuards(RolesGuard)
   @Get(':id/get-users')
-  getUserGroups(@Param('id') id: string) {
-    return this.groupService.getGroupUsers(+id);
+  getGroupUsers(@Param() params): string  {
+    // @ts-ignore
+    return this.groupService.getGroupUsers(+params.id);
   }
 
-  // @Get(':id/get-groups')
-  // getGroupUsers(@Param('id') id: string) {
-  //
-  //   return this.groupService.getUserGroups(id);
-  // }
+  @Get(':id/get-groups')
+  getUserGroups(@Param() params): string {
+    // @ts-ignore
+    return this.groupService.getUserGroups(params.id);
+  }
 
 
-
+  @UseGuards(RolesGuard)
   @Get()
   findAll() {
     return this.groupService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.groupService.findOne(+id);
+  getOne(@Param() params): string {
+    // @ts-ignore
+    return this.groupService.findOne(+params.id);
   }
 
   @Patch(':id')

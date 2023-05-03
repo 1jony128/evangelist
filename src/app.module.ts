@@ -13,8 +13,9 @@ import { FilesModule } from './files/files.module';
 import { EvaEventModule } from './eva-event/eva-event.module';
 import { GroupModule } from './group/group.module';
 import * as path from 'path';
-import { UserGroups } from "src/group/entities/user-groups.model";
-import { Group } from "src/group/entities/group.model";
+import { UserGroups } from "group/entities/user-groups.model";
+import { Group } from "group/entities/group.model";
+import { ServeStaticModule } from "@nestjs/serve-static";
 
 @Module({
     controllers: [],
@@ -31,7 +32,11 @@ import { Group } from "src/group/entities/group.model";
             password: process.env.POSTGRESS_PASSWORD,
             database: process.env.POSTGRES_DB,
             models: [User, Role, UserRoles, Post, UserGroups, Group],
-            autoLoadModels: true
+            autoLoadModels: true,
+            synchronize: true
+        }),
+        ServeStaticModule.forRoot({
+          rootPath: path.resolve(__dirname, 'static'),
         }),
         UsersModule,
         RolesModule,

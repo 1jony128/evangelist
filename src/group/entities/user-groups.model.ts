@@ -1,7 +1,7 @@
 import {BelongsToMany, Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript";
 import {ApiProperty} from "@nestjs/swagger";
-import { Group } from "src/group/entities/group.model";
-import { User } from "src/users/users.model";
+import { Group } from "group/entities/group.model";
+import { User } from "users/users.model";
 
 
 @Table({tableName: 'user_groups', createdAt: false, updatedAt: false})

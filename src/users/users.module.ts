@@ -8,8 +8,8 @@ import {UserRoles} from "../roles/user-roles.model";
 import {RolesModule} from "../roles/roles.module";
 import {AuthModule} from "../auth/auth.module";
 import {Post} from "../posts/posts.model";
-import { Group } from "src/group/entities/group.model";
-import { UserGroups } from "src/group/entities/user-groups.model";
+import { Group } from "group/entities/group.model";
+import { FilesModule } from "files/files.module";
 
 @Module({
   providers: [UsersService],
@@ -18,6 +18,7 @@ import { UserGroups } from "src/group/entities/user-groups.model";
       SequelizeModule.forFeature([User, Role, UserRoles, Post, Group]),
       RolesModule,
       forwardRef(() => AuthModule),
+      FilesModule
   ],
     exports: [
         UsersService,

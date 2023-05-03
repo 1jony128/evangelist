@@ -2,14 +2,14 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
 import { InjectModel } from "@nestjs/sequelize";
-import { Role } from "src/roles/roles.model";
-import { CreateRoleDto } from "src/roles/dto/create-role.dto";
-import { Group } from "src/group/entities/group.model";
-import { UserGroupDto } from "src/group/dto/user-to-group.dto";
-import { RolesService } from "src/roles/roles.service";
-import { UsersService } from "src/users/users.service";
-import { UserGroups } from "src/group/entities/user-groups.model";
-import { User } from "src/users/users.model";
+import { Role } from "roles/roles.model";
+import { CreateRoleDto } from "roles/dto/create-role.dto";
+import { Group } from "group/entities/group.model";
+import { UserGroupDto } from "group/dto/user-to-group.dto";
+import { RolesService } from "roles/roles.service";
+import { UsersService } from "users/users.service";
+import { UserGroups } from "group/entities/user-groups.model";
+import { User } from "users/users.model";
 
 @Injectable()
 export class UserGroupService {
@@ -48,14 +48,13 @@ export class UserGroupService {
   async findAllByGroupId(groupId: number) {
     try{
       const group = await this.userGroupRepository.findAll({
+        attributes: ['userId'],
         where: { groupId }
       });
       if(group){
         return group;
       }
     }catch (e){
-      console.log("nnnnnn")
-      console.log(e)
       throw new HttpException('В этой группе нет пользователей', HttpStatus.NOT_FOUND);
     }
 
@@ -65,12 +64,13 @@ export class UserGroupService {
   }
 
   async findAllByUserId(userId: number) {
-    const user = await this.userGroupRepository.findAll({
+    const groups = await this.userGroupRepository.findAll({
+      attributes: ['groupId'],
       where: { userId }
     });
 
-    if(user){
-      return user;
+    if(groups){
+      return groups;
     }
 
     throw new HttpException('Пользователь не принадлежит ни одной группе', HttpStatus.NOT_FOUND);

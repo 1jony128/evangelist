@@ -6,15 +6,15 @@ import {ValidationPipe} from "./pipes/validation.pipe";
 
 
 async function start() {
-    const PORT = process.env.PORT || 5000;
+    const PORT = process.env.PORT || 5001;
     const app = await NestFactory.create(AppModule);
     app.enableCors();
     app.setGlobalPrefix('api')
     const config = new DocumentBuilder()
-        .setTitle('Урок по продвинотому BACKEND')
+        .setTitle('Evangelist BACKEND')
         .setDescription('Документация REST API')
         .setVersion('1.0.0')
-        .addTag('ULBI TV')
+        .addTag('Евгений Шевцов')
         .build()
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('/api/docs', app, document)

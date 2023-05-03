@@ -1,6 +1,6 @@
 import { IsString } from "class-validator";
 
-export class CreateEvaEventDto {
+export class UpdateEvaEventDto {
   readonly geo_lon: string;
   readonly geo_lat: string;
   readonly date: string;
