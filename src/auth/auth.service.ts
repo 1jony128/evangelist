@@ -47,7 +47,6 @@ export class AuthService {
     }
 
     const { key_access, ...userDtoWithoutKeyAccess } = userDto;
-    //
     const access_key = key_access;
 
     // получаю группу по ключу
