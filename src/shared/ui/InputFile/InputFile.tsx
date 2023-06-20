@@ -1,6 +1,6 @@
 import cls from "./InputFile.module.scss"
 import {classNames} from "shared/lib/classNames";
-import {FC} from "react";
+import React, {FC} from "react";
 import {EditIcon} from '@chakra-ui/icons';
 
 interface InputFileProps {

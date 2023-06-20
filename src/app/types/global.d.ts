@@ -11,7 +11,7 @@ declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.svg' {
     import React from 'react';
-
+// @ys-ignore
     const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
     export default SVG;
 }

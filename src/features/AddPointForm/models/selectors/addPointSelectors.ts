@@ -1,5 +1,4 @@
 import {AddPointShema} from '../store/addPointStore';
-import {MapShema} from 'entities/Map/models/store/MapStore';
 
 export const selectIsOpen = (state: AddPointShema) => state.isOpen;
 export const selectSetOpen = (state: AddPointShema) => state.setOpen;

@@ -1,8 +1,8 @@
 import cls from './DialogPoint.module.scss';
-import {FC, useEffect, useMemo, useRef, useState} from 'react';
+import {FC} from 'react';
 import {useMapStore} from 'entities/Map/models/store/MapStore';
-import {getStreetData, getTouchCoords,} from 'entities/Map/models/selectors/mapSelectors';
-import {Button, Text, useOutsideClick} from '@chakra-ui/react';
+import {getStreetData,} from 'entities/Map/models/selectors/mapSelectors';
+import {Button, Text} from '@chakra-ui/react';
 import {VStack} from 'shared/ui/Stack';
 import {useAddPointStore} from 'features/AddPointForm/models/store/addPointStore';
 import {selectSetOpen} from 'features/AddPointForm/models/selectors/addPointSelectors';

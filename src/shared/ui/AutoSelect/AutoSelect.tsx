@@ -3,7 +3,6 @@ import Select, {ActionMeta, SingleValue} from 'react-select';
 import cls from './AutoSelect.module.scss';
 import {useQuery} from 'react-query';
 import {AutoSelectService} from 'shared/ui/AutoSelect/services/autoSelect';
-import {useUserStore} from 'entities/User/models/store/useUserStore';
 import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
 
 interface AutoSelectProps {

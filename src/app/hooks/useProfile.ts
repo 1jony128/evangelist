@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { AutoSelectService } from "shared/ui/AutoSelect/services/autoSelect";
 import { IUser } from "entities/User/models/types/userTypes";
 import { useUserStore } from "entities/User/models/store/useUserStore";
-import {selectId, selectSetId} from 'entities/User/models/selectors';
+import { selectId, selectSetId } from "entities/User/models/selectors";
 
 const useProfile = () => {
   const { setUser } = useUserStore();
 
   const id = useUserStore(selectId);
-  const setId = useUserStore(selectSetId)
+  const setId = useUserStore(selectSetId);
 
-  console.log(id)
+  console.log(id);
 
   useEffect(() => {
-    if(localStorage.getItem('user_id')){
-      setId(`${(localStorage.getItem('user_id'))}`)
+    if (localStorage.getItem("user_id")) {
+      setId(`${localStorage.getItem("user_id")}`);
     }
-  }, [])
+  }, []);
 
   const { isLoading, data, error } = useQuery<"", "", IUser>( // @ts-ignore
     id && ["profile", id],
@@ -25,7 +25,7 @@ const useProfile = () => {
     {
       onSuccess: (data) => {
         setUser(data);
-        console.log('ddd')
+        console.log("ddd");
       },
     }
   );

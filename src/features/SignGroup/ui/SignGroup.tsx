@@ -1,6 +1,6 @@
 import cls from "./SignGroup.module.scss";
 import { classNames } from "shared/lib/classNames";
-import {FC, useEffect, useRef} from 'react';
+import { FC, useEffect, useRef } from "react";
 import {
   Button,
   Drawer,
@@ -11,15 +11,13 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Input,
-  useDisclosure,
   Text,
-  FormControl,
+  useDisclosure,
 } from "@chakra-ui/react";
 import useInput from "shared/hooks/useInput";
 import { alert } from "shared/lib/alerts";
-import {useMutation, useQueryClient} from 'react-query';
-import {EditProfileService} from 'features/editProfile/services/editProfileService';
-import {GroupServices} from 'entities/Group/models/services/GroupServices';
+import { useMutation, useQueryClient } from "react-query";
+import { GroupServices } from "entities/Group/models/services/GroupServices";
 
 interface SignGroupProps {
   className?: string;
@@ -29,24 +27,26 @@ const SignGroup: FC<SignGroupProps> = ({ className }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<HTMLButtonElement | null>(null);
 
-  const client = useQueryClient()
-
+  const client = useQueryClient();
 
   const accessKey = useInput("");
 
-  const {mutate, error, isLoading} = useMutation('signGroup', GroupServices.signGroup, {
+  const { mutate, error, isLoading } = useMutation(
+    "signGroup",
+    GroupServices.signGroup,
+    {
       onSuccess: (newPoint) => {
-        alert("Группа добавлена!", "success")
+        alert("Группа добавлена!", "success");
 
-        client.invalidateQueries('allGroups')
+        client.invalidateQueries("allGroups").then((r) => r);
       },
       onError: (error: any) => {
-        console.log(error)
+        console.log(error);
         // @ts-ignore
-        alert(error.message, 'error')
-      }
+        alert(error.message, "error");
+      },
     }
-  )
+  );
 
   const onSubmit = () => {
     if (accessKey.value === "") {
@@ -56,20 +56,19 @@ const SignGroup: FC<SignGroupProps> = ({ className }) => {
       return;
     }
     mutate({
-      userId: Number(localStorage.getItem('user_id')),
-      access_key: accessKey.value
-    })
+      userId: Number(localStorage.getItem("user_id")),
+      access_key: accessKey.value,
+    });
 
     accessKey.setValue("");
     onClose();
   };
 
   useEffect(() => {
-    if(!isOpen){
-      accessKey.clear()
+    if (!isOpen) {
+      accessKey.clear();
     }
-  },[isOpen])
-
+  }, [isOpen]);
 
   console.log(accessKey.hover);
 
@@ -100,7 +99,9 @@ const SignGroup: FC<SignGroupProps> = ({ className }) => {
               onFocus={accessKey.onFocus}
             />
             {!!accessKey.error && accessKey.hover && (
-              <Text color={"red"}  fontSize={'smaller'}>{accessKey.error}</Text>
+              <Text color={"red"} fontSize={"smaller"}>
+                {accessKey.error}
+              </Text>
             )}
           </DrawerBody>
 

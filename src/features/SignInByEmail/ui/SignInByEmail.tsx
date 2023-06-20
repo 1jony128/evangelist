@@ -1,25 +1,23 @@
 import cls from "./SignInByEmail.module.scss";
 import { classNames } from "shared/lib/classNames";
-import {FC, useState} from 'react';
-import {Button, Heading, Input, Text, Tooltip} from '@chakra-ui/react';
+import { FC, useState } from "react";
+import { Button, Heading, Input, Text, Tooltip } from "@chakra-ui/react";
 import { HStack, VStack } from "shared/ui/Stack";
 import { useSignStore } from "features/SignInByEmail/model/store/signStore";
 import { selectSetShowSign } from "features/SignInByEmail/model/selector";
-import useInput from 'shared/hooks/useInput';
-import useAuth from 'features/AuthByEmail/models/hook/useAuth';
-import {alert} from 'shared/lib/alerts';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import Loader from 'shared/ui/Loader/Loader';
-import useSignIn from 'features/SignInByEmail/model/hook/useSignIn';
-import {AddressSuggestions} from 'react-dadata';
+import useInput from "shared/hooks/useInput";
+import { alert } from "shared/lib/alerts";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Loader from "shared/ui/Loader/Loader";
+import useSignIn from "features/SignInByEmail/model/hook/useSignIn";
+import { AddressSuggestions } from "react-dadata";
 
 interface SignInByEmailProps {
   className?: string;
 }
 
 const SignInByEmail: FC<SignInByEmailProps> = ({ className }) => {
-
   const name = useInput("");
   const email = useInput("");
   const password = useInput("");
@@ -48,15 +46,14 @@ const SignInByEmail: FC<SignInByEmailProps> = ({ className }) => {
       password.setError(true);
       error++;
     }
-    if (error) return true;
-    return false;
+    return !!error;
   };
-  console.log(city)
+  console.log(city);
 
   const onSubmit = async () => {
     if (validation()) return;
 
-    console.log(city)
+    console.log(city);
 
     const data = {
       name: name.value,
@@ -64,8 +61,8 @@ const SignInByEmail: FC<SignInByEmailProps> = ({ className }) => {
       password: password.value,
       geo_lon: city.value.data.geo_lon,
       geo_lat: city.value.data.geo_lat,
-      avatar: '',
-      key_access: keyAccess.value
+      avatar: "",
+      key_access: keyAccess.value,
     };
     mutate(data);
   };
@@ -78,11 +75,7 @@ const SignInByEmail: FC<SignInByEmailProps> = ({ className }) => {
       <Heading>Регистрация</Heading>
       <HStack max align={"center"} justify={"between"} gap={"16"}>
         <Text>Имя</Text>
-        <Input
-          placeholder="Имя"
-          value={name.value}
-          onChange={name.onChange}
-        />
+        <Input placeholder="Имя" value={name.value} onChange={name.onChange} />
       </HStack>
       <HStack max align={"center"} justify={"between"} gap={"16"}>
         <Text>email:</Text>
@@ -101,9 +94,15 @@ const SignInByEmail: FC<SignInByEmailProps> = ({ className }) => {
           onChange={password.onChange}
         />
         {!showPassword ? (
-          <RemoveRedEyeIcon onClick={handleClickShowPassword} cursor={'pointer'}/>
+          <RemoveRedEyeIcon
+            onClick={handleClickShowPassword}
+            cursor={"pointer"}
+          />
         ) : (
-          <VisibilityOffIcon onClick={handleClickShowPassword} cursor={'pointer'}/>
+          <VisibilityOffIcon
+            onClick={handleClickShowPassword}
+            cursor={"pointer"}
+          />
         )}
       </HStack>
       <HStack max align={"center"} justify={"between"} gap={"16"}>
@@ -115,13 +114,19 @@ const SignInByEmail: FC<SignInByEmailProps> = ({ className }) => {
           onChange={repeatPassword.onChange}
         />
         {!showPassword ? (
-          <RemoveRedEyeIcon onClick={handleClickShowPassword} cursor={'pointer'}/>
+          <RemoveRedEyeIcon
+            onClick={handleClickShowPassword}
+            cursor={"pointer"}
+          />
         ) : (
-          <VisibilityOffIcon onClick={handleClickShowPassword} cursor={'pointer'}/>
+          <VisibilityOffIcon
+            onClick={handleClickShowPassword}
+            cursor={"pointer"}
+          />
         )}
       </HStack>
       <HStack max align={"center"} justify={"between"} gap={"16"}>
-        <Tooltip label={'Уточняйте ключ доступа у администраторов приложения'}>
+        <Tooltip label={"Уточняйте ключ доступа у администраторов приложения"}>
           <Text>Ключ доступа</Text>
         </Tooltip>
         <Input

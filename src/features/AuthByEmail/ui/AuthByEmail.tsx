@@ -40,8 +40,8 @@ const AuthByEmail: FC<AuthByEmailProps> = ({ className }) => {
       password.setError(true);
       error++;
     }
-    if (error) return true;
-    return false;
+    return !!error;
+
   };
 
   const onSubmit = async () => {

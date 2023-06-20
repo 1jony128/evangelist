@@ -1,5 +1,5 @@
-import {FC, Suspense, useEffect, useState} from 'react';
-import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom';
+import {FC, Suspense, useState} from 'react';
+import {Route, Routes, useNavigate} from 'react-router-dom';
 import AuthPage from 'pages/AuthPage/AuthPage';
 import MapPage from 'pages/MapPage/MapPage';
 import './styles/index.scss'

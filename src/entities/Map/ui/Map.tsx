@@ -1,34 +1,33 @@
-import {Dispatch, FC, SetStateAction, useEffect, useRef, useState} from 'react';
+import { FC } from "react";
 import useWindowDimensions from "shared/lib/hooks/useWindowDimension";
 import usePoint from "entities/Map/models/hooks/usePoint";
 import {
   CircleMarker,
-  LayersControl,
-  MapContainer, Pane,
-  Popup, ScaleControl,
-  TileLayer, Tooltip,
+  MapContainer,
+  Popup,
+  ScaleControl,
+  TileLayer,
+  Tooltip,
   useMap,
   useMapEvents,
-} from 'react-leaflet';
-import { LatLngExpression } from "leaflet";
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import InfoPoint from "pages/MapPage/InfoPoint/ui/InfoPoint";
 import { useMapStore } from "entities/Map/models/store/MapStore";
 import {
   getPoints,
-  getSetStreetData,
   getSetTouchCoords,
   getStreetData,
-  getTouchCoords, selectPosition,
-} from 'entities/Map/models/selectors/mapSelectors';
-import DialogPoint from "pages/MapPage/DialogPoint/ui/DialogPoint";
-import {AddPointForm} from 'features/AddPointForm';
-import MarkerEva from 'entities/Map/ui/MarkerEva';
-import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
-import {selectCurrentGroup} from 'entities/Group/models/selectors';
-import cls from "./Map.module.scss"
-import MyLocation from 'features/myLocation/MyLocation';
+  getTouchCoords,
+  selectPosition,
+} from "entities/Map/models/selectors/mapSelectors";
+import MarkerEva from "entities/Map/ui/MarkerEva";
+import { useGroupsStore } from "entities/Group/models/store/useGroupStore";
+import { selectCurrentGroup } from "entities/Group/models/selectors";
+import cls from "./Map.module.scss";
+import MyLocation from "features/myLocation/MyLocation";
+
 interface MapProps {
   className?: string;
 }
@@ -43,7 +42,7 @@ const MapHandler: FC<MapHandlerProps> = ({}) => {
 
   const mapEvents = useMapEvents({
     click(event) {
-      console.log(event)
+      console.log(event);
       setTouchCoords([+event.latlng.lat, +event.latlng.lng]);
     },
   });
@@ -56,17 +55,14 @@ const Map: FC<MapProps> = ({ className }) => {
 
   const streetData = useMapStore(getStreetData);
 
-  const currentGroup = useGroupsStore(selectCurrentGroup)
-
-
+  const currentGroup = useGroupsStore(selectCurrentGroup);
 
   usePoint({});
 
   const points = useMapStore(getPoints);
   const touchCoords = useMapStore(getTouchCoords);
 
-  const position = useMapStore(selectPosition)
-
+  const position = useMapStore(selectPosition);
 
   return (
     <MapContainer
@@ -77,7 +73,7 @@ const Map: FC<MapProps> = ({ className }) => {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
       />
       <div className={cls.currentGroup}>
         {currentGroup?.name || "Группа не определена"}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { useMapStore } from "entities/Map/models/store/MapStore";
 import { useMutation, useQuery } from "react-query";
 import { alert } from "shared/lib/alerts";

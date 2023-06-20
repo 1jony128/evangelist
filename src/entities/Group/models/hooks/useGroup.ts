@@ -1,16 +1,13 @@
-import {useState, useEffect} from "react";
-import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
-import {selectSetCurrentGroup} from 'entities/Group/models/selectors';
-import {IGroup} from 'entities/Group/models/types';
-import {useQuery} from 'react-query';
-import {GroupServices} from 'entities/Group/models/services/GroupServices';
-import {useUserStore} from 'entities/User/models/store/useUserStore';
-import {selectUser} from 'entities/User/models/selectors';
-
+import { useEffect } from "react";
+import { useGroupsStore } from "entities/Group/models/store/useGroupStore";
+import { selectSetCurrentGroup } from "entities/Group/models/selectors";
+import { useQuery } from "react-query";
+import { GroupServices } from "entities/Group/models/services/GroupServices";
+import { useUserStore } from "entities/User/models/store/useUserStore";
+import { selectUser } from "entities/User/models/selectors";
 
 const useGroup = () => {
-
-  const setCurrentGroup = useGroupsStore(selectSetCurrentGroup)
+  const setCurrentGroup = useGroupsStore(selectSetCurrentGroup);
 
   const user = useUserStore(selectUser);
 
@@ -19,21 +16,18 @@ const useGroup = () => {
     user?.id && ["allGroups", user.id],
     () => GroupServices.AllGroups(user?.id),
     {
-      onSuccess: ({ data }) => {
-      },
+      onSuccess: ({ data }) => {},
     }
   );
 
-    useEffect(() => {
-      const currentGroup = localStorage.getItem('group_id')
-        if(currentGroup){
-          setCurrentGroup(JSON.parse(currentGroup))
-        } else {
-          if(data)
-          setCurrentGroup(data.data[0])
-        }
-    },[data])
-
+  useEffect(() => {
+    const currentGroup = localStorage.getItem("group_id");
+    if (currentGroup) {
+      setCurrentGroup(JSON.parse(currentGroup));
+    } else {
+      if (data) setCurrentGroup(data.data[0]);
+    }
+  }, [data]);
 };
 
 export default useGroup;
