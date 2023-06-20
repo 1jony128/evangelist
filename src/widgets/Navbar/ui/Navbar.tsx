@@ -11,26 +11,24 @@ interface NavbarProps {
 const links = [
   {
     value: '/',
-    name: 'Map',
+    name: 'Карта',
   },
   {
     value: '/group',
-    name: 'Group',
+    name: 'Группы',
   },
   {
     value: '/rating',
-    name: 'Rating',
+    name: 'Рейтинг',
   },
   {
     value: '/profile',
-    name: 'Profile',
+    name: 'Профиль',
   },
 ];
 
 const Navbar: FC<NavbarProps> = ({className}) => {
   const location = useLocation();
-
-  console.log(location);
 
   return (
     <HStack

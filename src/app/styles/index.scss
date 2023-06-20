@@ -26,20 +26,26 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--card-bg);        /* цвет дорожки */
+    background: var(--mutedDark);        /* цвет дорожки */
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--inverted-primary-color);    /* цвет плашки */
+    background-color: var(--dark1);    /* цвет плашки */
     border-radius: 20px;       /* закругления плашки */
-    border: 2px solid var(--primary-color);  /* padding вокруг плашки */
 }
 
 body{
   background: #eceaea;
+  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px) !important;
 }
 
 #root{
-  height: 100vh;
+  height: 100%;
   position: fixed;
+}
+
+
+.react-dadata__container{
+  width: 100%;
 }

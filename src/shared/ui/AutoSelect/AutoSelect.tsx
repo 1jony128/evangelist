@@ -1,9 +1,11 @@
-import { FC, useState } from "react";
-import Select, { ActionMeta, SingleValue } from "react-select";
-import cls from "./AutoSelect.module.scss";
+import {FC, memo, useState} from 'react';
+import Select, {ActionMeta, SingleValue} from 'react-select';
+import cls from './AutoSelect.module.scss';
 import {useQuery} from 'react-query';
-import {AutoSelectService, fetchAutoSelect} from 'shared/ui/AutoSelect/services/autoSelect';
+import {AutoSelectService} from 'shared/ui/AutoSelect/services/autoSelect';
 import {useUserStore} from 'entities/User/models/store/useUserStore';
+import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
+
 interface AutoSelectProps {
   isDisabled: boolean;
   value: string;
@@ -16,30 +18,22 @@ export interface Option {
   label: string;
 }
 
-const options: Option[] = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
 const AutoSelect: FC<AutoSelectProps> = ({
-  isDisabled,
-  value,
   setValue,
   label,
+  value,
 }) => {
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
-  const {user} = useUserStore()
+  const {currentGroup} = useGroupsStore()
 
-  const {isLoading, data, error} = useQuery('users', () => AutoSelectService.getOptions("group/" + user?.id + "/get-users/"), {
+  const {isLoading, data, error} = useQuery('users', () => AutoSelectService.getOptions("group/" + currentGroup?.id + "/get-users/"), {
     onSuccess:() => {
       console.log("")
     },
     select: (data) => data.map((item: any) => ({
-      value: item.id, label: item.email
+      value: item.id, label: item.name
     }))
   })
-
-  console.log(data)
 
   const handleChange = (
     newValue: SingleValue<Option>,
@@ -48,8 +42,6 @@ const AutoSelect: FC<AutoSelectProps> = ({
     setValue(newValue)
     setSelectedOption(newValue);
   };
-
-  console.log(data)
 
   return (
     <Select
@@ -60,8 +52,9 @@ const AutoSelect: FC<AutoSelectProps> = ({
       maxMenuHeight={400}
       placeholder={label}
       isLoading={isLoading}
+      defaultInputValue={value || undefined}
     />
   );
 };
 
-export default AutoSelect;
+export default memo(AutoSelect);

@@ -1,0 +1,16 @@
+.MyLocation{
+  display: flex;
+  position: fixed;
+  z-index: var(--control-z-index);
+  right: 15px;
+  bottom: calc(var(--navbar-height) + 50px);
+  border-radius: 50px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 10px;
+  transition: all 0.5s;
+  &:hover{
+    transform: scale(1.1) rotate(90deg);
+    background: rgb(255, 255, 255);
+  }
+}

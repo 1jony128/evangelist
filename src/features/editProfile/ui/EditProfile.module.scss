@@ -1,3 +1,13 @@
 .EditProfile{
 
 }
+
+.InputFile{
+  padding: 10px;
+  height: auto !important;
+  background: var(--mutedDark);
+}
+.Button{
+  cursor: pointer;
+  transform: scale(0.1);
+}

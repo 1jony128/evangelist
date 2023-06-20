@@ -1,20 +1,22 @@
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
 import {IPoint, Street, StreetData} from 'entities/Point/models/types/point';
+import {LatLngExpression} from 'leaflet';
 
 export interface MapShema {
-  comment: string
+  position: LatLngExpression
+  setPosition: (payload: LatLngExpression) => void
   coordinates: {
     screenArea: number[][] | null // geo, захватываемая область экрана
     touchCoords: number[] | null // нажатие на карту. [50.30787631729209, 127.55092794232424]
   },
   points: IPoint[] // точки на карте
-  setComment: (payload: string) => void
+
   selectPoint: string | null // selectId выбранная точка на карте.
   streetData: Street[]
   setScreenArea: (payload: number[][]) => void
   setSelectPoint: (payload: string) => void
-  setTouchCoords: (payload: number[]) => void
+  setTouchCoords: (payload: number[] | null) => void
   setStreetData: (payload: StreetData) => void
   clearStreetData: () => void
   setPoints: (payload: IPoint[]) => void
@@ -24,7 +26,10 @@ export interface MapShema {
 export const useMapStore = create<MapShema>()(
   devtools(
     (set) => ({
-      comment: "",
+      position: [50.29693652129269, 127.53487760357913],
+      setPosition: (position) => set((state) => ({
+        position
+      }), false, "map/setPosition"),
       coordinates: {
         screenArea: null,
         touchCoords: null
@@ -32,9 +37,7 @@ export const useMapStore = create<MapShema>()(
       points: [],
       selectPoint: null,
       streetData: [],
-      setComment: (comment: string) => set((state) => ({
-        comment
-      }), false, "map/setComment"),
+
       setScreenArea: (payload: number[][]) => set((state) => ({
         coordinates: {
           ...state.coordinates,
@@ -44,7 +47,7 @@ export const useMapStore = create<MapShema>()(
       setSelectPoint: (payload: string) => set((state) => ({
         selectPoint: payload
       }), false, "map/setSelectPoint"),
-      setTouchCoords: (payload: number[]) => set((state) => ({
+      setTouchCoords: (payload: number[] | null) => set((state) => ({
         coordinates: {
           ...state.coordinates,
           touchCoords: payload

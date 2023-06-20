@@ -1,32 +1,114 @@
+import {Dispatch, FC, SetStateAction, useEffect, useRef, useState} from 'react';
+import useWindowDimensions from "shared/lib/hooks/useWindowDimension";
+import usePoint from "entities/Map/models/hooks/usePoint";
+import {
+  CircleMarker,
+  LayersControl,
+  MapContainer, Pane,
+  Popup, ScaleControl,
+  TileLayer, Tooltip,
+  useMap,
+  useMapEvents,
+} from 'react-leaflet';
+import { LatLngExpression } from "leaflet";
+import "leaflet/dist/leaflet.css";
+import MarkerClusterGroup from "react-leaflet-cluster";
+import InfoPoint from "pages/MapPage/InfoPoint/ui/InfoPoint";
+import { useMapStore } from "entities/Map/models/store/MapStore";
+import {
+  getPoints,
+  getSetStreetData,
+  getSetTouchCoords,
+  getStreetData,
+  getTouchCoords, selectPosition,
+} from 'entities/Map/models/selectors/mapSelectors';
+import DialogPoint from "pages/MapPage/DialogPoint/ui/DialogPoint";
+import {AddPointForm} from 'features/AddPointForm';
+import MarkerEva from 'entities/Map/ui/MarkerEva';
+import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
+import {selectCurrentGroup} from 'entities/Group/models/selectors';
 import cls from "./Map.module.scss"
-import {classNames} from "shared/lib/classNames";
-import {FC} from "react";
-import useWindowDimensions from 'shared/lib/hooks/useWindowDimension';
-import usePoint from 'entities/Map/models/hooks/usePoint';
-import useObjectManager from 'entities/Map/models/hooks/useObjectManager';
-
+import MyLocation from 'features/myLocation/MyLocation';
 interface MapProps {
-    className?: string,
-    map:  ymaps.Map | null
-    objectManager: ymaps.ObjectManager | null
+  className?: string;
 }
 
-const Map: FC<MapProps> = ({className,map,objectManager}) => {
+interface MapHandlerProps {}
 
+const MapHandler: FC<MapHandlerProps> = ({}) => {
+  const setTouchCoords = useMapStore(getSetTouchCoords);
+  const streetData = useMapStore(getStreetData);
+
+  const map = useMap();
+
+  const mapEvents = useMapEvents({
+    click(event) {
+      console.log(event)
+      setTouchCoords([+event.latlng.lat, +event.latlng.lng]);
+    },
+  });
+
+  return <></>;
+};
+
+const Map: FC<MapProps> = ({ className }) => {
   const { height, width } = useWindowDimensions();
 
-  usePoint({objectManager})
-  useObjectManager({objectManager,map})
+  const streetData = useMapStore(getStreetData);
 
-    return (
-      <div
-        id="map-id"
-        className={classNames(cls.Map, {}, [className])}
-        style={{width: width, height: height - 60}}
-      >
+  const currentGroup = useGroupsStore(selectCurrentGroup)
 
+
+
+  usePoint({});
+
+  const points = useMapStore(getPoints);
+  const touchCoords = useMapStore(getTouchCoords);
+
+  const position = useMapStore(selectPosition)
+
+
+  return (
+    <MapContainer
+      center={position}
+      zoom={13}
+      scrollWheelZoom={true}
+      style={{ height: height - 60, width }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png'
+      />
+      <div className={cls.currentGroup}>
+        {currentGroup?.name || "Группа не определена"}
       </div>
-    );
+      <MyLocation />
+      <MarkerClusterGroup chunkedLoading>
+        {points &&
+          points.map((item) => (
+            <CircleMarker
+              center={[+item.geo_lat, +item.geo_lon]}
+              key={`${item.id}`}
+              eventHandlers={{
+                click: () => {
+                  console.log("marker clicked");
+                },
+              }}
+            >
+              <Tooltip>
+                <InfoPoint point={item} />
+              </Tooltip>
+              <Popup>
+                <InfoPoint point={item} />
+              </Popup>
+            </CircleMarker>
+          ))}
+      </MarkerClusterGroup>
+      {touchCoords && <MarkerEva />}
+      <MapHandler />
+      <ScaleControl />
+    </MapContainer>
+  );
 };
 
 export default Map;

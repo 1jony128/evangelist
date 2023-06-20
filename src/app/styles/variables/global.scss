@@ -29,12 +29,14 @@
     // z - Индексы
     --modal-z-index: 1000;
     --overlay-z-index: 100;
+    --control-z-index: 400;
 
     // Цвета
     --overlay-color: rgba(0 0 0 / 60%);
     --red-light: #f00;
     --red-dark: #ce0505;
     --mutedDark: #E2E8F0;
+    --dark1: #6d6d6d;
     --blue: #2b6cb0;
     --green: #3fce3f;
 }

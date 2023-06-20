@@ -1,3 +1,9 @@
-.Map{
-
+.currentGroup{
+  position: fixed;
+  background: rgba(255, 255, 255, 0.56);
+  z-index: var(--control-z-index);
+  right: 15px;
+  top: 15px;
+  padding: 10px;
+  border-radius: 10px;
 }

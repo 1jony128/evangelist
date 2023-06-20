@@ -1,23 +1,16 @@
 export interface IPoint {
-  type: "Feature",
-  id: string,
-  geometry: {
-    type: string,
-    coordinates: number[]
-  } ,
-  properties?:  {
-    "name": string,
-    "street": string,
-    "entrance": string,
-    "countNewspaper": string,
-    // "balloonContent": `<div>Раздавал ${name.value},
-    // кол-во ${countNewspaper.value}  газет.
-    // Адрес: ${street.value} Подъезды: ${entrance.value}
-    // </div>`,
-  },
-  options?: {
-    preset: string
-  }
+  geo_lat: string
+  geo_lon: string
+  count: string
+  createdAt: string
+  date: string
+  id: number
+  updatedAt: string
+  userId: number
+  address: string
+  "user_name": string,
+  "group_name": string,
+  "comment": string,
 }
 
 export type TypeMode = "create" | "edit"
@@ -131,7 +124,7 @@ export  interface StreetData {
   "suggestions": Street[]
 }
 
-export interface IGetPoint {
+export interface IPoint {
   geo_lat: string
   geo_lon: string
   count: string
@@ -140,4 +133,8 @@ export interface IGetPoint {
   id: number
   updatedAt: string
   userId: number
+  address: string
+  "user_name": string,
+  "group_name": string,
+  "comment": string,
 }

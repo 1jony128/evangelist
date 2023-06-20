@@ -7,4 +7,7 @@ export const AuthService = {
   async AuthByEmail (data: IAuthByEmail)  {
     return $api.post('auth/login',data)
   },
+  async SignByEmail (data: IAuthByEmail)  {
+    return $api.post('auth/registration',data)
+  },
 }

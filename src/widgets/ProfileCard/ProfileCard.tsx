@@ -1,6 +1,7 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 import cls from "./ProfileCard.module.scss";
 import { HStack, VStack } from "shared/ui/Stack";
+import {BASE_URL} from 'app/utils/apiAxios';
 type ProfileProps = {
   name: string;
   avatarUrl: string;
@@ -19,7 +20,7 @@ const ProfileCard: React.FC<ProfileProps> = ({
   return (
     <VStack gap={"32"} className={cls.ProfileCard} align={"center"}>
       {/* @ts-ignore */}
-      <Avatar src={avatarUrl} alt={name} size="2xl" />
+      <Avatar src={BASE_URL + "/" + avatarUrl} alt={name} size="2xl" />
       <VStack align="center" gap={"16"} max>
         <HStack gap={"16"}>
           <Text fontWeight="bold">{name}</Text>

@@ -1,105 +1,85 @@
-import cls from "./AddPointForm.module.scss";
-import { classNames } from "shared/lib/classNames";
-import { FC, useEffect, useMemo, useState } from "react";
-import MyDrawer from "shared/ui/MyDrawer/MyDrawer";
-import { useMapStore } from "entities/Map/models/store/MapStore";
+import cls from './AddPointForm.module.scss';
+import {FC, useEffect} from 'react';
+import MyDrawer from 'shared/ui/MyDrawer/MyDrawer';
+import {useMapStore} from 'entities/Map/models/store/MapStore';
+import {getStreetData} from 'entities/Map/models/selectors/mapSelectors';
+import {Button, Text, Textarea} from '@chakra-ui/react';
+import {HStack, VStack} from 'shared/ui/Stack';
+import {useAddPointStore} from 'features/AddPointForm/models/store/addPointStore';
 import {
-  getPoints,
-  getSetPoints,
-  getStreetData,
-  getTouchCoords, selectComment, selectSetComment,
-} from 'entities/Map/models/selectors/mapSelectors';
-import { ObjectManager } from "yandex-maps";
-import { IPoint } from "entities/Point/models/types/point";
-import {
-  Button,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Text,
-  Textarea,
-} from "@chakra-ui/react";
-import { HStack, VStack } from "shared/ui/Stack";
-import { useAddPointStore } from "features/AddPointForm/models/store/addPointStore";
-import {
-  getFio,
-  getIsOpen,
-  getSetClose, getSetFio,
-  getSetOpen,
+  selectAddress,
+  selectComment,
+  selectCount,
+  selectFio,
+  selectIsOpen,
+  selectMode,
+  selectSetAddress,
+  selectSetClose, selectSetComment,
+  selectSetCount,
+  selectSetFio,
 } from 'features/AddPointForm/models/selectors/addPointSelectors';
-import InputNumber from "shared/ui/InputNumber/InputNumber";
-import useInput from "shared/hooks/useInput";
+import InputNumber from 'shared/ui/InputNumber/InputNumber';
 import AutoSelect, {Option} from 'shared/ui/AutoSelect/AutoSelect';
 import useAddPoint from 'features/AddPointForm/models/hooks/useAddPoint';
-import Loader from "shared/ui/Loader/Loader";
+import Loader from 'shared/ui/Loader/Loader';
 import {SingleValue} from 'react-select';
-import useProfile from 'app/hooks/useProfile';
+import {AddressSuggestions,} from 'react-dadata';
+import 'react-dadata/dist/react-dadata.css';
+import useInitEditMode from 'features/AddPointForm/models/hooks/useInitEditMode';
 
 interface DialogPointProps {
   className?: string;
-  objectManager: ObjectManager | null;
-  map: ymaps.Map | null;
 }
 
-const AddPointForm: FC<DialogPointProps> = ({
-  className,
-  objectManager,
-  map,
-}) => {
+const AddPointForm: FC<DialogPointProps> = ({ className }) => {
+  const mode = useAddPointStore(selectMode);
+
   const streetData = useMapStore(getStreetData);
-  const touchCoords = useMapStore(getTouchCoords);
-  const setPoints = useMapStore(getSetPoints);
-  const points = useMapStore(getPoints);
 
-  const comment = useMapStore(selectComment);
-  const setComment = useMapStore(selectSetComment);
+  const comment = useAddPointStore(selectComment);
+  const setComment = useAddPointStore(selectSetComment);
 
-  const isOpen = useAddPointStore(getIsOpen);
-  const setClose = useAddPointStore(getSetClose);
+  const isOpen = useAddPointStore(selectIsOpen);
+  const setClose = useAddPointStore(selectSetClose);
 
-  const fio = useAddPointStore(getFio);
-  const setFio = useAddPointStore(getSetFio)
+  const fio = useAddPointStore(selectFio);
+  const setFio = useAddPointStore(selectSetFio);
 
-  const [count, setCount] = useState(25);
+  const address = useAddPointStore(selectAddress);
+  const setAddress = useAddPointStore(selectSetAddress);
 
-  const {isLoading, onSubmit, error} = useAddPoint({count})
+  const count = useAddPointStore(selectCount);
+  const setCount = useAddPointStore(selectSetCount);
 
-  console.log(isOpen)
+  useInitEditMode();
 
-  useEffect(() => {
-    if (isOpen) {
-      const { geo_lat, geo_lon, fias_id } = streetData[0].data;
-
-      const coords = [+geo_lat + 0.000018, +geo_lon + 0.000018];
-
-      // const point: IPoint = {
-      //   type: "Feature",
-      //   id: fias_id,
-      //   geometry: {
-      //     type: "Point",
-      //     coordinates: coords
-      //   } ,
-      //   options: {
-      //     preset: 'islands#blueCircleDotIconWithCaption'
-      //   }
-      // }
-      //
-      // setPoints([...points, point])
-    }
-  }, [isOpen]);
+  const { isLoading, onSubmit, error } = useAddPoint();
 
   const selectValue = (value: SingleValue<Option>) => {
     setFio({
       value: value!.label,
-      id: value!.value
-    })
-  }
+      id: value!.value,
+    });
+  };
 
+  useEffect(() => {
+    if (mode === "create" && streetData) {
+      setAddress(
+        `ул. ${streetData[0]?.data?.street}, д. ${streetData[0]?.data?.house}`
+      );
+    } else {
+      if (mode === "create") {
+        setAddress(`Благовещенск`);
+      }
+    }
+  }, [mode, streetData]);
 
   return (
-    <MyDrawer active={isOpen} setActive={setClose} header={"Создать метку"}>
+    <MyDrawer
+      active={isOpen}
+      setActive={setClose}
+      header={mode === "create" ? "Создать метку" : "Редактировать метку"}
+    >
       <VStack
         max
         align={"center"}
@@ -108,11 +88,22 @@ const AddPointForm: FC<DialogPointProps> = ({
         className={cls.AddPointForm}
       >
         <HStack gap={"16"} max>
+          <Text>Адрес</Text>
+          <AddressSuggestions
+            token="02064c1ca019072ad521dd88b722db1019854ac2"
+            value={typeof address === "string" ? undefined : address}
+            onChange={setAddress}
+            defaultQuery={
+              typeof address === "string" ? address : "Благовещенск"
+            }
+            delay={500}
+          />
+        </HStack>
+        <HStack gap={"16"} max>
           <Text>Имя</Text>
           <AutoSelect
             isDisabled={false}
-            // @ts-ignore
-            value={fio?.value | ""}
+            value={fio?.value || ""}
             setValue={selectValue}
             label={"Имя раздающего"}
           />
@@ -125,13 +116,15 @@ const AddPointForm: FC<DialogPointProps> = ({
           <Textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            placeholder="Введите комментарий"
+            placeholder="Комментарий: Номера подъездов, заметка т.д."
             size="lg"
             resize={"none"}
           />
         </HStack>
-        <Loader active={isLoading}  />
-        <Button onClick={onSubmit} colorScheme="green">Создать</Button>
+        <Loader active={isLoading} />
+        <Button onClick={onSubmit} colorScheme="green">
+          {mode === "create" ? "Создать" : "Сохранить"}
+        </Button>
       </VStack>
     </MyDrawer>
   );
