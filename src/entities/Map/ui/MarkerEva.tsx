@@ -38,7 +38,7 @@ const MarkerEva: FC<MarkerEvaProps> = ({className}) => {
 
     return (
       <CircleMarker pathOptions={greenOptions} center={touchCoords as LatLngExpression} ref={refMarker}>
-        <Popup autoClose>
+        <Popup>
           <DialogPoint />
         </Popup>
       </CircleMarker>

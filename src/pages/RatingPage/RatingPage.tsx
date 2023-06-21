@@ -36,7 +36,7 @@ const RatingPage: FC<RatingPageProps> = ({}) => {
       },
     }
   );
-  const { isLoading } = useQuery<"_", "_", AxiosResponse<User[]>>(
+  const { isLoading } = useQuery<any, any, AxiosResponse<User[]>>(
     // @ts-ignore
     groups && groups[0]?.id && ["AllGroupUsers", groups[0]?.id],
     () => GroupServices.AllGroupUsers(groups![0]!.id),

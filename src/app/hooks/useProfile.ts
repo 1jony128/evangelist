@@ -19,7 +19,7 @@ const useProfile = () => {
     }
   }, []);
 
-  const { isLoading, data, error } = useQuery<"", "", IUser>( // @ts-ignore
+  const { isLoading, data, error } = useQuery<any, any, IUser>( // @ts-ignore
     id && ["profile", id],
     () => AutoSelectService.getOptions("users/" + id),
     {
