@@ -72,7 +72,6 @@ const App: FC<AppProps> = ({}) => {
 
   return (
     <>
-
         {
           auth ?
             <Suspense fallback={'...'}>
