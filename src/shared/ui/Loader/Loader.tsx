@@ -1,7 +1,7 @@
 import cls from "./Loader.module.scss"
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "@/shared/lib/classNames";
 import {FC} from "react";
-import {HStack} from 'shared/ui/Stack';
+import {HStack} from '@/shared/ui/Stack';
 
 interface LoaderProps {
     className?: string

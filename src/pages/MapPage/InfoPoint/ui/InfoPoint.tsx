@@ -1,10 +1,10 @@
 import cls from "./InfoPoint.module.scss";
 import { FC } from "react";
 import { Button, Text } from "@chakra-ui/react";
-import { VStack } from "shared/ui/Stack";
-import { useAddPointStore } from "features/AddPointForm/models/store/addPointStore";
-import { selectSetOpen } from "features/AddPointForm/models/selectors/addPointSelectors";
-import { IPoint } from "entities/Point/models/types/point";
+import { VStack } from "@/shared/ui/Stack";
+import { useAddPointStore } from "@/features/AddPointForm/models/store/addPointStore";
+import { selectSetOpen } from "@/features/AddPointForm/models/selectors/addPointSelectors";
+import { IPoint } from "@/entities/Point/models/types/point";
 
 interface InfoPointProps {
   point: IPoint;

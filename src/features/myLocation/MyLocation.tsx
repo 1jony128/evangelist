@@ -1,10 +1,10 @@
 import cls from './MyLocation.module.scss';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import {FC, useEffect} from 'react';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import {useMap, useMapEvents} from 'react-leaflet';
-import {useMapStore} from 'entities/Map/models/store/MapStore';
-import {selectPosition, selectSetPosition,} from 'entities/Map/models/selectors/mapSelectors';
+import {useMapStore} from '@/entities/Map/models/store/MapStore';
+import {selectPosition, selectSetPosition,} from '@/entities/Map/models/selectors/mapSelectors';
 import {LatLngExpression} from 'leaflet';
 import {createPortal} from 'react-dom';
 import {Tooltip} from '@chakra-ui/react';

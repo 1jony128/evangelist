@@ -1,6 +1,6 @@
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
-import {IGroup} from 'entities/Group/models/types';
+import {IGroup} from '@/entities/Group/models/types';
 
 export interface GroupsSchema {
   groups: IGroup[] | null

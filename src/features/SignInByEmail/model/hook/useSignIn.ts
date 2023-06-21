@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useMutation } from "react-query";
-import { AuthService } from "features/AuthByEmail/models/services/auth";
-import { alert } from "shared/lib/alerts";
-import { useCardsStore } from "features/AuthByEmail/models/authStore";
-import { selectSetId } from "entities/User/models/selectors";
-import { useUserStore } from "entities/User/models/store/useUserStore";
+import { AuthService } from "@/features/AuthByEmail/models/services/auth";
+import { alert } from "@/shared/lib/alerts";
+import { useCardsStore } from "@/features/AuthByEmail/models/authStore";
+import { selectSetId } from "@/entities/User/models/selectors";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
 
 const useSignIn = () => {
   const setAuth = useCardsStore((state) => state.setAuth);

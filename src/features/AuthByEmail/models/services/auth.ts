@@ -1,5 +1,5 @@
-import {$api} from 'app/utils/apiAxios';
-import {IAuthByEmail} from 'features/AuthByEmail/models/types';
+import {$api} from '@/app/utils/apiAxios';
+import {IAuthByEmail} from '@/features/AuthByEmail/models/types';
 
 
 

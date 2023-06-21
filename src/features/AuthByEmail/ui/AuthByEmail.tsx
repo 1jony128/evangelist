@@ -1,16 +1,16 @@
 import cls from "./AuthByEmail.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "@/shared/lib/classNames";
 import { FC, useState } from "react";
-import { HStack, VStack } from "shared/ui/Stack";
-import useInput from "shared/hooks/useInput";
-import { alert } from "shared/lib/alerts";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import useInput from "@/shared/hooks/useInput";
+import { alert } from "@/shared/lib/alerts";
 import { Button, Heading, Input, Text } from "@chakra-ui/react";
-import Loader from "shared/ui/Loader/Loader";
-import useAuth from "features/AuthByEmail/models/hook/useAuth";
+import Loader from "@/shared/ui/Loader/Loader";
+import useAuth from "@/features/AuthByEmail/models/hook/useAuth";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {useSignStore} from 'features/SignInByEmail/model/store/signStore';
-import {selectSetShowSign} from 'features/SignInByEmail/model/selector';
+import {useSignStore} from '@/features/SignInByEmail/model/store/signStore';
+import {selectSetShowSign} from '@/features/SignInByEmail/model/selector';
 interface AuthByEmailProps {
   className?: string;
 }

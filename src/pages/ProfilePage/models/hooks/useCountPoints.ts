@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
-import { alert } from "shared/lib/alerts";
-import { PointServices } from "entities/Point/models/services/PointServices";
-import { useUserStore } from "entities/User/models/store/useUserStore";
+import { alert } from "@/shared/lib/alerts";
+import { PointServices } from "@/entities/Point/models/services/PointServices";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
 
 export interface Data {
   id: number;

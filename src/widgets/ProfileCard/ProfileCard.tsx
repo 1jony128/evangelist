@@ -1,7 +1,7 @@
 import { Avatar, Text } from "@chakra-ui/react";
 import cls from "./ProfileCard.module.scss";
-import { HStack, VStack } from "shared/ui/Stack";
-import { BASE_URL } from "app/utils/apiAxios";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import { BASE_URL } from "@/app/utils/apiAxios";
 import React from 'react';
 
 type ProfileProps = {

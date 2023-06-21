@@ -1,18 +1,18 @@
 import cls from "./EditProfile.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "@/shared/lib/classNames";
 import React, { FC, useState } from "react";
-import { HStack, VStack } from "shared/ui/Stack";
+import { HStack, VStack } from "@/shared/ui/Stack";
 import { Avatar, Button, Text } from "@chakra-ui/react";
 import {
   selectFile,
   selectSetFile,
-} from "features/editProfile/model/selectors";
-import { useProfileStore } from "features/editProfile/model/store/useProfileStore";
-import InputFile from "shared/ui/InputFile/InputFile";
-import useEditAvatar from "features/editProfile/model/hooks/useEditAvatar";
-import { useUserStore } from "entities/User/models/store/useUserStore";
-import Loader from "shared/ui/Loader/Loader";
-import { selectUser } from "entities/User/models/selectors";
+} from "@/features/editProfile/model/selectors";
+import { useProfileStore } from "@/features/editProfile/model/store/useProfileStore";
+import InputFile from "@/shared/ui/InputFile/InputFile";
+import useEditAvatar from "@/features/editProfile/model/hooks/useEditAvatar";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
+import Loader from "@/shared/ui/Loader/Loader";
+import { selectUser } from "@/entities/User/models/selectors";
 
 interface ContentProps {
   className?: string;

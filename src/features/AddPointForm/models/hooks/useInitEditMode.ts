@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAddPointStore } from "features/AddPointForm/models/store/addPointStore";
+import { useAddPointStore } from "@/features/AddPointForm/models/store/addPointStore";
 import {
   selectFio,
   selectIsOpen,
@@ -9,8 +9,8 @@ import {
   selectSetComment,
   selectSetCount,
   selectSetFio,
-} from "features/AddPointForm/models/selectors/addPointSelectors";
-import { useUserStore } from "entities/User/models/store/useUserStore";
+} from "@/features/AddPointForm/models/selectors/addPointSelectors";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
 
 const useInitEditMode = () => {
   const user = useUserStore((state) => state.user);

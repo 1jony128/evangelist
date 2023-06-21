@@ -1,8 +1,8 @@
-import {EditProfileService} from 'features/editProfile/services/editProfileService';
+import {EditProfileService} from '@/features/editProfile/services/editProfileService';
 import {useMutation, useQueryClient} from 'react-query';
-import {alert} from 'shared/lib/alerts';
-import {useProfileStore} from 'features/editProfile/model/store/useProfileStore';
-import {selectSetShow} from 'features/editProfile/model/selectors';
+import {alert} from '@/shared/lib/alerts';
+import {useProfileStore} from '@/features/editProfile/model/store/useProfileStore';
+import {selectSetShow} from '@/features/editProfile/model/selectors';
 
 
 const useEditAvatar = () => {

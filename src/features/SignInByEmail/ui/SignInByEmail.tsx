@@ -1,16 +1,16 @@
 import cls from "./SignInByEmail.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "@/shared/lib/classNames";
 import { FC, useState } from "react";
 import { Button, Heading, Input, Text, Tooltip } from "@chakra-ui/react";
-import { HStack, VStack } from "shared/ui/Stack";
-import { useSignStore } from "features/SignInByEmail/model/store/signStore";
-import { selectSetShowSign } from "features/SignInByEmail/model/selector";
-import useInput from "shared/hooks/useInput";
-import { alert } from "shared/lib/alerts";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import { useSignStore } from "@/features/SignInByEmail/model/store/signStore";
+import { selectSetShowSign } from "@/features/SignInByEmail/model/selector";
+import useInput from "@/shared/hooks/useInput";
+import { alert } from "@/shared/lib/alerts";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import Loader from "shared/ui/Loader/Loader";
-import useSignIn from "features/SignInByEmail/model/hook/useSignIn";
+import Loader from "@/shared/ui/Loader/Loader";
+import useSignIn from "@/features/SignInByEmail/model/hook/useSignIn";
 import { AddressSuggestions } from "react-dadata";
 
 interface SignInByEmailProps {

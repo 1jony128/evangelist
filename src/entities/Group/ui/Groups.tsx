@@ -1,15 +1,15 @@
 import {Accordion, Text} from '@chakra-ui/react';
 import cls from './Groups.module.scss';
-import GroupAccordion from 'entities/Group/ui/GroupAccordion';
+import GroupAccordion from '@/entities/Group/ui/GroupAccordion';
 import {FC} from 'react';
 import {useQuery} from 'react-query';
-import {GroupServices} from 'entities/Group/models/services/GroupServices';
-import {useUserStore} from 'entities/User/models/store/useUserStore';
-import {selectUser} from 'entities/User/models/selectors';
-import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
-import {selectGroups, selectSetGroups} from 'entities/Group/models/selectors';
-import Loader from 'shared/ui/Loader/Loader';
-import {VStack} from 'shared/ui/Stack';
+import {GroupServices} from '@/entities/Group/models/services/GroupServices';
+import {useUserStore} from '@/entities/User/models/store/useUserStore';
+import {selectUser} from '@/entities/User/models/selectors';
+import {useGroupsStore} from '@/entities/Group/models/store/useGroupStore';
+import {selectGroups, selectSetGroups} from '@/entities/Group/models/selectors';
+import Loader from '@/shared/ui/Loader/Loader';
+import {VStack} from '@/shared/ui/Stack';
 
 type GroupsAccordionProps = {
 };

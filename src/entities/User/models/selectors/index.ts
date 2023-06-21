@@ -1,4 +1,4 @@
-import {UserSchema} from 'entities/User/models/store/useUserStore';
+import {UserSchema} from '@/entities/User/models/store/useUserStore';
 
 export const selectUser = (state: UserSchema) => state.user
 export const selectSetUser = (state: UserSchema) => state.setUser

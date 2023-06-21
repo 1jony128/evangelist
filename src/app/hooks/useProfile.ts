@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useQuery } from "react-query";
-import { AutoSelectService } from "shared/ui/AutoSelect/services/autoSelect";
-import { IUser } from "entities/User/models/types/userTypes";
-import { useUserStore } from "entities/User/models/store/useUserStore";
-import { selectId, selectSetId } from "entities/User/models/selectors";
+import { AutoSelectService } from "@/shared/ui/AutoSelect/services/autoSelect";
+import { IUser } from "@/entities/User/models/types/userTypes";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
+import { selectId, selectSetId } from "@/entities/User/models/selectors";
 
 const useProfile = () => {
   const { setUser } = useUserStore();

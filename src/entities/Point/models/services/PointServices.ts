@@ -1,6 +1,6 @@
-import {$api} from 'app/utils/apiAxios';
-import {IAddPoint, IUpdatePoint} from 'features/AddPointForm/models/types';
-import { Data } from 'pages/ProfilePage/models/hooks/useCountPoints';
+import {$api} from '@/app/utils/apiAxios';
+import {IAddPoint, IUpdatePoint} from '@/features/AddPointForm/models/types';
+import { Data } from '@/pages/ProfilePage/models/hooks/useCountPoints';
 
 export const PointServices = {
   async AddPoint (data: IAddPoint)  {

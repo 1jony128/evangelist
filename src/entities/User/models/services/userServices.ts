@@ -1,4 +1,4 @@
-import { $api } from "app/utils/apiAxios";
+import { $api } from "@/app/utils/apiAxios";
 
 // export const UserService = {
 //   async GetUser(id: string) {

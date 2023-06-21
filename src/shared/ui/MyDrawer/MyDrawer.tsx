@@ -1,5 +1,5 @@
 import cls from "./MyDrawer.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "@/shared/lib/classNames";
 import { FC, ReactNode, useEffect } from "react";
 import {
   CloseButton,

@@ -1,4 +1,4 @@
-import {IProfileStore} from 'features/editProfile/model/store/useProfileStore';
+import {IProfileStore} from '@/features/editProfile/model/store/useProfileStore';
 
 export const selectShow  = (state: IProfileStore) => state.show
 export const selectSetShow  = (state: IProfileStore) => state.setShow

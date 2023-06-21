@@ -1,6 +1,6 @@
 import create from "zustand";
 import { devtools } from "zustand/middleware";
-import { IUser } from "entities/User/models/types/userTypes";
+import { IUser } from "@/entities/User/models/types/userTypes";
 
 export interface UserSchema {
   user: IUser | null;

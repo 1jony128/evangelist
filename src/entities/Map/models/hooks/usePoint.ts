@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useMapStore } from "entities/Map/models/store/MapStore";
+import { useMapStore } from "@/entities/Map/models/store/MapStore";
 import { useMutation, useQuery } from "react-query";
-import { alert } from "shared/lib/alerts";
-import { MapServices } from "entities/Map/models/services/mapServices";
+import { alert } from "@/shared/lib/alerts";
+import { MapServices } from "@/entities/Map/models/services/mapServices";
 import {
   getPoints,
   getSetPoints,
@@ -10,8 +10,8 @@ import {
   getSetStreetData,
   getStreetData,
   getTouchCoords,
-} from "entities/Map/models/selectors/mapSelectors";
-import { PointServices } from "entities/Point/models/services/PointServices";
+} from "@/entities/Map/models/selectors/mapSelectors";
+import { PointServices } from "@/entities/Point/models/services/PointServices";
 
 interface usePointProps {}
 

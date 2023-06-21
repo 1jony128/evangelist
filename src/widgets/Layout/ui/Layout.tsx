@@ -1,8 +1,8 @@
 import cls from "./Layout.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "@/shared/lib/classNames";
 import { FC, ReactNode } from "react";
-import { VStack } from "shared/ui/Stack";
-import Navbar from "widgets/Navbar/ui/Navbar";
+import { VStack } from "@/shared/ui/Stack";
+import Navbar from "@/widgets/Navbar/ui/Navbar";
 
 interface LayoutProps {
   className?: string;

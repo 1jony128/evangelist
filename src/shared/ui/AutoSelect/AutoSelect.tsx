@@ -2,8 +2,8 @@ import {FC, memo, useState} from 'react';
 import Select, {ActionMeta, SingleValue} from 'react-select';
 import cls from './AutoSelect.module.scss';
 import {useQuery} from 'react-query';
-import {AutoSelectService} from 'shared/ui/AutoSelect/services/autoSelect';
-import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
+import {AutoSelectService} from '@/shared/ui/AutoSelect/services/autoSelect';
+import {useGroupsStore} from '@/entities/Group/models/store/useGroupStore';
 
 interface AutoSelectProps {
   isDisabled: boolean;
@@ -51,7 +51,7 @@ const AutoSelect: FC<AutoSelectProps> = ({
       maxMenuHeight={400}
       placeholder={label}
       isLoading={isLoading}
-      defaultInputValue={value || undefined}
+      defaultInputValue={value}
     />
   );
 };

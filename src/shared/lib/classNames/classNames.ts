@@ -1,3 +1,5 @@
+// noinspection TypeScriptValidateTypes
+
 export type Mods = Record<string, boolean | string | undefined>;
 
 export function classNames(

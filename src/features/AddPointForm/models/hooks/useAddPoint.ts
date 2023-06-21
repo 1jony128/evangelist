@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "react-query";
-import { alert } from "shared/lib/alerts";
-import { IAddPoint } from "features/AddPointForm/models/types";
-import { PointServices } from "entities/Point/models/services/PointServices";
-import { useMapStore } from "entities/Map/models/store/MapStore";
-import { getStreetData } from "entities/Map/models/selectors/mapSelectors";
-import { useAddPointStore } from "features/AddPointForm/models/store/addPointStore";
+import { alert } from "@/shared/lib/alerts";
+import { IAddPoint } from "@/features/AddPointForm/models/types";
+import { PointServices } from "@/entities/Point/models/services/PointServices";
+import { useMapStore } from "@/entities/Map/models/store/MapStore";
+import { getStreetData } from "@/entities/Map/models/selectors/mapSelectors";
+import { useAddPointStore } from "@/features/AddPointForm/models/store/addPointStore";
 import {
   selectAddress,
   selectClearForm,
@@ -14,10 +14,10 @@ import {
   selectMode,
   selectPoint,
   selectSetClose,
-} from "features/AddPointForm/models/selectors/addPointSelectors";
-import { useUserStore } from "entities/User/models/store/useUserStore";
-import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
-import {selectCurrentGroup} from 'entities/Group/models/selectors';
+} from "@/features/AddPointForm/models/selectors/addPointSelectors";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
+import {useGroupsStore} from '@/entities/Group/models/store/useGroupStore';
+import {selectCurrentGroup} from '@/entities/Group/models/selectors';
 
 const useAddPoint = () => {
   const client = useQueryClient();

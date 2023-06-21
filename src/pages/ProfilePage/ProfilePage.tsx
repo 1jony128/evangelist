@@ -1,11 +1,11 @@
 import { FC } from "react";
-import Layout from "widgets/Layout/ui/Layout";
-import ProfileCard from "widgets/ProfileCard/ProfileCard";
-import { useUserStore } from "entities/User/models/store/useUserStore";
-import useCountPoints from "pages/ProfilePage/models/hooks/useCountPoints";
-import Loader from "shared/ui/Loader/Loader";
-import EditProfile from "features/editProfile/ui/EditProfile";
-import { VStack } from "shared/ui/Stack";
+import Layout from "@/widgets/Layout/ui/Layout";
+import ProfileCard from "@/widgets/ProfileCard/ProfileCard";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
+import useCountPoints from "@/pages/ProfilePage/models/hooks/useCountPoints";
+import Loader from "@/shared/ui/Loader/Loader";
+import EditProfile from "@/features/editProfile/ui/EditProfile";
+import { VStack } from "@/shared/ui/Stack";
 
 interface ProfilePageProps {}
 

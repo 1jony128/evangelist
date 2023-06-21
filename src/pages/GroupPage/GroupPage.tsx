@@ -1,10 +1,10 @@
 import {FC} from "react";
-import Layout from 'widgets/Layout/ui/Layout';
-import GroupsAccordion from 'entities/Group/ui/Groups';
+import Layout from '@/widgets/Layout/ui/Layout';
+import GroupsAccordion from '@/entities/Group/ui/Groups';
 import {Text} from '@chakra-ui/react';
-import AddGroup from 'features/addGroup/ui/AddGroup';
-import {SignGroup} from 'features/SignGroup';
-import {HStack, VStack} from 'shared/ui/Stack';
+import AddGroup from '@/features/addGroup/ui/AddGroup';
+import {SignGroup} from '@/features/SignGroup';
+import {HStack, VStack} from '@/shared/ui/Stack';
 import cls from "./GroupPage.module.scss"
 interface GroupPageProps {
 

@@ -1,66 +1,46 @@
 {
-  "name": "evangelist",
-  "version": "0.1.0",
+  "name": "eva_front",
   "private": true,
-  "homepage": "https://1jony128.github.io/",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@chakra-ui/icons": "2.0.17",
     "@chakra-ui/react": "2.4.9",
     "@fontsource/roboto": "4.5.8",
     "@mui/icons-material": "^5.11.11",
     "axios": "0.25.0",
-    "eslint-plugin-prettier": "4.2.1",
-    "gh-pages": "4.0.0",
     "leaflet": "^1.9.3",
     "prettier": "2.8.4",
-    "react": "18.2.0",
     "react-dadata": "^2.23.0",
-    "react-dom": "18.2.0",
     "react-hook-form": "7.34.2",
     "react-leaflet": "^4.2.1",
     "react-leaflet-cluster": "^2.1.0",
     "react-query": "3.39.3",
     "react-router-dom": "6.3.0",
-    "react-scripts": "5.0.1",
     "react-select": "5.7.0",
     "react-toastify": "9.0.1",
     "react-tooltip": "4.2.21",
     "sass": "^1.63.4",
-    "typescript": "4.7.3",
-    "web-vitals": "2.1.4",
-    "zustand": "4.3.2"
+    "zustand": "4.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/antd": "1.0.0",
-    "@types/jest": "27.5.2",
-    "@types/leaflet": "^1.9.1",
-    "@types/node": "17.0.45",
-    "@types/react": "18.0.13",
-    "@types/react-dom": "18.0.5",
-    "react-app-rewired": "^2.2.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react-swc": "^3.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9"
   }
 }

@@ -1,11 +1,11 @@
 import cls from './AddPointForm.module.scss';
 import {FC, useEffect} from 'react';
-import MyDrawer from 'shared/ui/MyDrawer/MyDrawer';
-import {useMapStore} from 'entities/Map/models/store/MapStore';
-import {getStreetData} from 'entities/Map/models/selectors/mapSelectors';
+import MyDrawer from '@/shared/ui/MyDrawer/MyDrawer';
+import {useMapStore} from '@/entities/Map/models/store/MapStore';
+import {getStreetData} from '@/entities/Map/models/selectors/mapSelectors';
 import {Button, Text, Textarea} from '@chakra-ui/react';
-import {HStack, VStack} from 'shared/ui/Stack';
-import {useAddPointStore} from 'features/AddPointForm/models/store/addPointStore';
+import {HStack, VStack} from '@/shared/ui/Stack';
+import {useAddPointStore} from '@/features/AddPointForm/models/store/addPointStore';
 import {
   selectAddress,
   selectComment,
@@ -17,15 +17,15 @@ import {
   selectSetClose, selectSetComment,
   selectSetCount,
   selectSetFio,
-} from 'features/AddPointForm/models/selectors/addPointSelectors';
-import InputNumber from 'shared/ui/InputNumber/InputNumber';
-import AutoSelect, {Option} from 'shared/ui/AutoSelect/AutoSelect';
-import useAddPoint from 'features/AddPointForm/models/hooks/useAddPoint';
-import Loader from 'shared/ui/Loader/Loader';
+} from '@/features/AddPointForm/models/selectors/addPointSelectors';
+import InputNumber from '@/shared/ui/InputNumber/InputNumber';
+import AutoSelect, {Option} from '@/shared/ui/AutoSelect/AutoSelect';
+import useAddPoint from '@/features/AddPointForm/models/hooks/useAddPoint';
+import Loader from '@/shared/ui/Loader/Loader';
 import {SingleValue} from 'react-select';
 import {AddressSuggestions,} from 'react-dadata';
 import 'react-dadata/dist/react-dadata.css';
-import useInitEditMode from 'features/AddPointForm/models/hooks/useInitEditMode';
+import useInitEditMode from '@/features/AddPointForm/models/hooks/useInitEditMode';
 
 interface DialogPointProps {
   className?: string;

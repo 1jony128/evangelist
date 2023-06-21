@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useGroupsStore } from "entities/Group/models/store/useGroupStore";
-import { selectSetCurrentGroup } from "entities/Group/models/selectors";
+import { useGroupsStore } from "@/entities/Group/models/store/useGroupStore";
+import { selectSetCurrentGroup } from "@/entities/Group/models/selectors";
 import { useQuery } from "react-query";
-import { GroupServices } from "entities/Group/models/services/GroupServices";
-import { useUserStore } from "entities/User/models/store/useUserStore";
-import { selectUser } from "entities/User/models/selectors";
+import { GroupServices } from "@/entities/Group/models/services/GroupServices";
+import { useUserStore } from "@/entities/User/models/store/useUserStore";
+import { selectUser } from "@/entities/User/models/selectors";
 
 const useGroup = () => {
   const setCurrentGroup = useGroupsStore(selectSetCurrentGroup);

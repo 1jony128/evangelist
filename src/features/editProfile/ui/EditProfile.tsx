@@ -1,15 +1,17 @@
+// noinspection TypeScriptValidateTypes
+
 import cls from "./EditProfile.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "@/shared/lib/classNames";
 import { FC } from "react";
-import { HStack, VStack } from "shared/ui/Stack";
+import { HStack, VStack } from "@/shared/ui/Stack";
 import { Button } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
 import {
   selectSetShow,
   selectShow,
-} from "features/editProfile/model/selectors";
-import { useProfileStore } from "features/editProfile/model/store/useProfileStore";
-import Content from 'features/editProfile/ui/Content';
+} from "@/features/editProfile/model/selectors";
+import { useProfileStore } from "@/features/editProfile/model/store/useProfileStore";
+import Content from '@/features/editProfile/ui/Content';
 
 interface EditProfileProps {
   className?: string;

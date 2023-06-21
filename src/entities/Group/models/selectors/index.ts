@@ -1,4 +1,4 @@
-import {GroupsSchema} from 'entities/Group/models/store/useGroupStore';
+import {GroupsSchema} from '@/entities/Group/models/store/useGroupStore';
 
 
 export const selectGroups = (state: GroupsSchema) => state.groups

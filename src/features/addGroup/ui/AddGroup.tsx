@@ -1,5 +1,5 @@
 import cls from "./AddGroup.module.scss"
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "@/shared/lib/classNames";
 import {FC} from "react";
 import {Button} from '@chakra-ui/react';
 

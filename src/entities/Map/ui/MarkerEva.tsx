@@ -1,11 +1,11 @@
 import {FC, useEffect, useRef} from 'react';
 import {CircleMarker, Popup} from 'react-leaflet';
 import {LatLngExpression} from 'leaflet';
-import DialogPoint from 'pages/MapPage/DialogPoint/ui/DialogPoint';
-import {useMapStore} from 'entities/Map/models/store/MapStore';
-import {getSetTouchCoords, getTouchCoords} from 'entities/Map/models/selectors/mapSelectors';
-import {useAddPointStore} from 'features/AddPointForm/models/store/addPointStore';
-import {selectIsOpen} from 'features/AddPointForm/models/selectors/addPointSelectors';
+import DialogPoint from '@/pages/MapPage/DialogPoint/ui/DialogPoint';
+import {useMapStore} from '@/entities/Map/models/store/MapStore';
+import {getSetTouchCoords, getTouchCoords} from '@/entities/Map/models/selectors/mapSelectors';
+import {useAddPointStore} from '@/features/AddPointForm/models/store/addPointStore';
+import {selectIsOpen} from '@/features/AddPointForm/models/selectors/addPointSelectors';
 
 interface MarkerEvaProps {
     className?: string

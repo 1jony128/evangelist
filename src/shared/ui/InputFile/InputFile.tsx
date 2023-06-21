@@ -1,5 +1,5 @@
 import cls from "./InputFile.module.scss"
-import {classNames} from "shared/lib/classNames";
+import {classNames} from "@/shared/lib/classNames";
 import React, {FC} from "react";
 import {EditIcon} from '@chakra-ui/icons';
 

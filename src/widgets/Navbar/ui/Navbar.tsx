@@ -1,8 +1,8 @@
 import cls from './Navbar.module.scss';
-import {classNames} from 'shared/lib/classNames';
+import {classNames} from '@/shared/lib/classNames';
 import {FC} from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import {HStack} from 'shared/ui/Stack';
+import {HStack} from '@/shared/ui/Stack';
 
 interface NavbarProps {
   className?: string;

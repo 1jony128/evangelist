@@ -1,20 +1,20 @@
 import {FC, useEffect, useState} from 'react';
-import Layout from 'widgets/Layout/ui/Layout';
+import Layout from '@/widgets/Layout/ui/Layout';
 
 import {Box, Flex, Text} from '@chakra-ui/react';
-import {HStack} from 'shared/ui/Stack';
+import {HStack} from '@/shared/ui/Stack';
 import {useMutation, useQuery} from 'react-query';
 import {AxiosResponse} from 'axios';
-import {User} from 'entities/Group/models/types';
-import {GroupServices} from 'entities/Group/models/services/GroupServices';
-import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
-import {selectGroups, selectSetGroups} from 'entities/Group/models/selectors';
-import {PointServices} from 'entities/Point/models/services/PointServices';
-import {alert} from 'shared/lib/alerts';
-import {Data} from 'pages/ProfilePage/models/hooks/useCountPoints';
-import Loader from 'shared/ui/Loader/Loader';
-import {useUserStore} from 'entities/User/models/store/useUserStore';
-import {selectUser} from 'entities/User/models/selectors';
+import {User} from '@/entities/Group/models/types';
+import {GroupServices} from '@/entities/Group/models/services/GroupServices';
+import {useGroupsStore} from '@/entities/Group/models/store/useGroupStore';
+import {selectGroups, selectSetGroups} from '@/entities/Group/models/selectors';
+import {PointServices} from '@/entities/Point/models/services/PointServices';
+import {alert} from '@/shared/lib/alerts';
+import {Data} from '@/pages/ProfilePage/models/hooks/useCountPoints';
+import Loader from '@/shared/ui/Loader/Loader';
+import {useUserStore} from '@/entities/User/models/store/useUserStore';
+import {selectUser} from '@/entities/User/models/selectors';
 
 interface RatingPageProps {}
 

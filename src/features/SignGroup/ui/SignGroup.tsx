@@ -1,5 +1,5 @@
 import cls from "./SignGroup.module.scss";
-import { classNames } from "shared/lib/classNames";
+import { classNames } from "@/shared/lib/classNames";
 import { FC, useEffect, useRef } from "react";
 import {
   Button,
@@ -14,10 +14,10 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import useInput from "shared/hooks/useInput";
-import { alert } from "shared/lib/alerts";
+import useInput from "@/shared/hooks/useInput";
+import { alert } from "@/shared/lib/alerts";
 import { useMutation, useQueryClient } from "react-query";
-import { GroupServices } from "entities/Group/models/services/GroupServices";
+import { GroupServices } from "@/entities/Group/models/services/GroupServices";
 
 interface SignGroupProps {
   className?: string;

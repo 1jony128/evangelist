@@ -1,6 +1,6 @@
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
-import {IPoint, Street, StreetData} from 'entities/Point/models/types/point';
+import {IPoint, Street, StreetData} from '@/entities/Point/models/types/point';
 import {LatLngExpression} from 'leaflet';
 
 export interface MapShema {

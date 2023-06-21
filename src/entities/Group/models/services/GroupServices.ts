@@ -1,5 +1,5 @@
-import {$api} from 'app/utils/apiAxios';
-import {signGroupDto, User} from 'entities/Group/models/types';
+import {$api} from '@/app/utils/apiAxios';
+import {signGroupDto, User} from '@/entities/Group/models/types';
 
 
 export const GroupServices = {

@@ -1,14 +1,14 @@
 import {useState} from 'react';
 import {AccordionButton, AccordionItem, AccordionPanel, Checkbox, Text, Tooltip, VStack,} from '@chakra-ui/react';
-import {IGroup, User} from 'entities/Group/models/types';
+import {IGroup, User} from '@/entities/Group/models/types';
 import {useQuery} from 'react-query';
-import {GroupServices} from 'entities/Group/models/services/GroupServices';
-import Loader from 'shared/ui/Loader/Loader';
+import {GroupServices} from '@/entities/Group/models/services/GroupServices';
+import Loader from '@/shared/ui/Loader/Loader';
 import {AxiosResponse} from 'axios';
-import {HStack} from 'shared/ui/Stack';
-import {selectCurrentGroup, selectSetCurrentGroup} from 'entities/Group/models/selectors';
-import {useGroupsStore} from 'entities/Group/models/store/useGroupStore';
-import {alert} from 'shared/lib/alerts';
+import {HStack} from '@/shared/ui/Stack';
+import {selectCurrentGroup, selectSetCurrentGroup} from '@/entities/Group/models/selectors';
+import {useGroupsStore} from '@/entities/Group/models/store/useGroupStore';
+import {alert} from '@/shared/lib/alerts';
 
 type GroupAccordionProps = {
   group: IGroup;

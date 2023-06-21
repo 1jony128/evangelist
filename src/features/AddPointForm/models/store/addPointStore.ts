@@ -1,6 +1,6 @@
 import create from 'zustand'
 import {devtools} from 'zustand/middleware'
-import {IPoint} from 'entities/Point/models/types/point';
+import {IPoint} from '@/entities/Point/models/types/point';
 import {DaDataAddress, DaDataSuggestion} from 'react-dadata';
 
 export type IMode = 'create' | 'edit'
