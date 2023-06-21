@@ -14,11 +14,11 @@ export const useGroupsStore = create<GroupsSchema>()(
   devtools(
     (set) => ({
       groups: null,
-      setGroups: (groups) => set((state) => ({
+      setGroups: (groups) => set(() => ({
         groups
       }), false, "group/setGroups"),
       currentGroup: null,
-      setCurrentGroup: (currentGroup) => set((state) => ({
+      setCurrentGroup: (currentGroup) => set(() => ({
         currentGroup
       }), false, "group/setCurrentGroup"),
     }), { name: "group" })

@@ -11,12 +11,12 @@ const useGroup = () => {
 
   const user = useUserStore(selectUser);
 
-  const { isLoading, error, data } = useQuery(
+  const { data } = useQuery(
     // @ts-ignore
     user?.id && ["allGroups", user.id],
     () => GroupServices.AllGroups(user?.id),
     {
-      onSuccess: ({ data }) => {},
+      onSuccess: ({}) => {},
     }
   );
 
