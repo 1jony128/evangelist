@@ -17,7 +17,7 @@ type GroupAccordionProps = {
 function GroupAccordion({ group }: GroupAccordionProps) {
   const [checkedUsers, setCheckedUsers] = useState<User[]>([]);
 
-  const { isLoading, error, data } = useQuery<"_", "_", AxiosResponse<User[]>>(
+  const { isLoading, error, data } = useQuery<any, any, AxiosResponse<User[]>>(
     // @ts-ignore
     group?.id && ["AllGroupUsers", group.id],
     () => GroupServices.AllGroupUsers(group?.id),
