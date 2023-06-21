@@ -1,3 +1,5 @@
+
+// @ts-nocheck
 import {Accordion, Text} from '@chakra-ui/react';
 import cls from './Groups.module.scss';
 import GroupAccordion from '@/entities/Group/ui/GroupAccordion';

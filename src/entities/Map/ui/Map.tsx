@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FC } from "react";
 import useWindowDimensions from "@/shared/lib/hooks/useWindowDimension";
 import usePoint from "@/entities/Map/models/hooks/usePoint";

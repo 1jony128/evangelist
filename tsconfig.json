@@ -23,7 +23,8 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "noImplicitInvocation": false
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
