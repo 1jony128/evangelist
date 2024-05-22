@@ -16,33 +16,5 @@
   </head>
   <body>
     <div id="root"></div>
-    <div id="preload" style="display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;">
-      <img src="%PUBLIC_URL%/favicon.ico" style="width: 100px;">
-      <h1 style="text-align: center;">ВЕРИШЬ ЛИ ТЫ?</h1>
-    </div>
-  <script>
-    var url = "https://dadata.ru/api/v2/stat/daily";
-    var token = "02064c1ca019072ad521dd88b722db1019854ac2";
-    var secret = "9b4871c4bb5250503ad5127d9d06d517a502add7";
-
-    var options = {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Token " + token,
-        "X-Secret": secret
-      }
-    }
-
-    fetch(url, options)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log("error", error));
-  </script>
   </body>
 </html>

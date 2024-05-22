@@ -2,24 +2,19 @@ import create from 'zustand'
 import { devtools } from 'zustand/middleware'
 import {IGroup} from 'types';
 
-export interface StoreSchema {
-  groups: IGroup[]
-  setGroups: (payload: IGroup[]) => void
-  currentId: string
-  setId: (currentId: string) => void
+export interface FilterSchema {
+  filter: string
+  setFilter: (payload: string) => void
 }
 
 
-export const useStore = create<StoreSchema>()(
+export const useFilter = create<FilterSchema>()(
   devtools(
     (set) => ({
       currentId: "1",
-      groups: [],
-      setGroups: (groups: IGroup[]) => set((state) => ({
-        groups
-      }), false, "map/setGroups"),
-      setId: (currentId: string) => set((state) => ({
-        currentId
-      }), false, "map/setId"),
-    }), { name: "map" })
+      filter: "all",
+      setFilter: (filter) => set((state) => ({
+        filter
+      }), false, "filter/setFilter"),
+    }), { name: "filter" })
 )

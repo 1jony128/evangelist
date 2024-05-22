@@ -6,33 +6,61 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import {FC, useEffect, useState} from 'react';
+import {Card, CardActions, CardContent, CardMedia} from '@mui/material';
+import {getDownloadURL, getStorage, ref} from 'firebase/storage';
 
-export default function Member() {
-  return (
-      <>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Brunch this weekend?"
-            secondary={
-              <React.Fragment>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Ali Connors
-                </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-      </>
-
-  );
+interface MemberProps {
+  fio: string
+  photo: string
+  role: string
 }
+
+const Member: FC<MemberProps> = ({photo,role,fio}) => {
+
+  const [image, setImage] = useState<string | null>(null)
+
+
+  useEffect(() => {
+    if(photo){
+      const storage = getStorage();
+      const pathReference = ref(storage, photo);
+      console.log(pathReference)
+      getDownloadURL(pathReference).then(data => {
+        console.log(data)
+        setImage(data)
+      })
+    }
+  },[photo])
+
+  console.log(image)
+
+  if(image)
+  return (
+        <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+            sx={{ height: 240 }}
+            image={image}
+            title="green iguana"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {fio}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {role}
+            </Typography>
+          </CardContent>
+        </Card>
+  );
+
+  console.log(image)
+
+  return (
+    <Card sx={{ maxWidth: 345 }}>
+      Загрузка...
+    </Card>
+  )
+}
+
+export default Member

@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {Caurusel} from 'components/TabsPanel/Place/Caurusel';
+import Caurusel from 'components/TabsPanel/Place/Caurusel';
 import Filter from 'components/TabsPanel/Place/Filter';
 import {useStore} from 'store/useStore';
 import {selectPlaces, selectReviews} from 'store/selectors';

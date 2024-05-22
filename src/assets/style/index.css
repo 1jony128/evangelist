@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.grammotes{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+.image_place{
+    width: 90vw;
+    height: calc(90vh - 300px);
+    object-fit: contain;
+}
+
+
+.contact{
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.phone{
+    margin: 0;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
+}
+
+.phone:hover{
+    transform: scale(1.2);
+    background: rgba(237, 234, 234, 0.51);
+    padding: 5px;
+    border-radius: 10px;
+}
+
