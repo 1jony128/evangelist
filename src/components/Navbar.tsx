@@ -19,7 +19,7 @@ export default function Navbar() {
     <Box sx={{ backgroundColor: "#E7EBF0", flexGrow: 1 }}>
         <Toolbar >
           <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-           ЦП Содействие
+              ЦДП Содействие
           </Typography>
           <Stack direction="row" spacing={2} alignItems={'center'}>
             <Typography variant="body1" component="div" sx={{flexGrow: 1}}>
