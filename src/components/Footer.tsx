@@ -15,7 +15,7 @@ const Footer: FC<FooterProps> = ({}) => {
           justifyContent={'center'}
         >
           <Typography>
-            Футер сайта
+            Все права защищены
           </Typography>
         </Stack>
     );
