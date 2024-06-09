@@ -10,9 +10,7 @@ import Reviews from 'components/TabsPanel/Reviews/Reviews';
 import Contact from 'components/TabsPanel/Contact';
 import Grammotes from 'components/TabsPanel/Grammotes/Grammotes';
 import Places from 'components/TabsPanel/Place/Places';
-
-
-
+import cls from "./index.module.scss";
 
 
 
@@ -81,17 +79,22 @@ function Group() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          {
-            tabs.map(item =>
-              <Tab
-                className={'tab_item'}
-                label={item.name}
-                {...selectTab(item.value)}
-              />
-            )
-          }
-        </Tabs>
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"  className={cls.menu}
+                sx={{
+                  flexWrap: 'wrap',
+                  justifyContent: 'flex-end'
+                }}>
+            {
+              tabs.map(item =>
+                  <Tab
+                      className={'tab_item'}
+                      label={item.name}
+                      {...selectTab(item.value)}
+                  />
+              )
+            }
+          </Tabs>
+
       </Box>
       {
         tabsPanel.map(item => (

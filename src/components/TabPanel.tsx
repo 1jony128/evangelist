@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import cls from "./index.module.scss";
 
 interface TabPanelProps {
   children?: React.ReactNode;

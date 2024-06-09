@@ -9,6 +9,14 @@ body {
     justify-content: center;
 }
 
+.MuiTabs-flexContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.MuiToolbar-root{
+    gap: 10px;
+}
 
 .image_place{
     width: 90vw;

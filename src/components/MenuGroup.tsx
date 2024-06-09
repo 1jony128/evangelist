@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import {useStore} from 'store/useStore';
 import {selectGroups, selectPlaces} from 'store/selectors';
 import {useNavigate} from 'react-router-dom';
-
+import cls from './index.module.scss'
 export default function BasicMenu() {
 
   const groups = useStore(selectGroups)
@@ -30,7 +30,7 @@ export default function BasicMenu() {
   }
 
   return (
-    <div>
+    <div >
       <IconButton
         size="large"
         edge="start"
