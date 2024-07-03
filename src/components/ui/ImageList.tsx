@@ -20,7 +20,7 @@ const TitlebarImageList: FC<ITitlebarImageList> = ({width, height}) => {
   const data = useStore(selectGrammotes)
 
   return (
-    <ImageList sx={{ width: width || 500, height: height || 450 }}>
+    <ImageList sx={{ width: '100%', height: '100%' }}>
       {/*@ts-ignore*/}
       {data && data.map((item) => (
         <Grammote {...item}/>

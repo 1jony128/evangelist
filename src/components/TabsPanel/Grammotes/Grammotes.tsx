@@ -8,8 +8,8 @@ interface GrammotesProps {
 
 const Grammotes: FC<GrammotesProps> = ({}) => {
     return (
-        <Stack alignItems={'center'} >
-          <StandardImageList width={1000} height={1000}/>
+        <Stack alignItems={'center'}  sx={{padding: '10px'}}>
+          <StandardImageList />
         </Stack>
     );
 };

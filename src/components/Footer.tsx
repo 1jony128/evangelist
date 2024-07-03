@@ -9,14 +9,21 @@ interface FooterProps {
 const Footer: FC<FooterProps> = ({}) => {
     return (
         <Stack
-          flexDirection={'row'}
-          sx={{backgroundColor: "black", height: 60, color: "white"}}
+          flexDirection={'column'}
+          sx={{backgroundColor: "black", height: 100, color: "white", padding: '10px'}}
           alignItems={'center'}
           justifyContent={'center'}
+          gap={1}
         >
+          
           <Typography>
-            Все права защищены
+          ОГРН 1112300001692
           </Typography>
+          <Typography>
+          Менеджер Михаил <a href="tel:+79002515333">+7 900 251-53-33</a>
+          </Typography>
+          <Typography>ККОО ЦДП "СОДЕЙСТВИЕ"
+          г. Краснодар, ул. Красных Партизан, 105</Typography>
         </Stack>
     );
 };
