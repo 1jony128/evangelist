@@ -1,10 +1,6 @@
-
-import {FC, useEffect, useState} from 'react';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
-import ImageListItem from '@mui/material/ImageListItem';
 import * as React from 'react';
+import {FC, useEffect, useState} from 'react';
+import ImageListItem from '@mui/material/ImageListItem';
 import {IGrammote} from 'types';
 import {getDownloadURL, getStorage, ref} from 'firebase/storage';
 import {CircularProgress, Paper} from '@mui/material';
@@ -47,7 +43,7 @@ const Grammote: FC<IGrammote> = ({photo, name}) => {
 
 
     return (
-      <ImageListItem key={name}>
+      <ImageListItem key={name} className={'imageItem'}>
         <img
           src={`${image}?w=248&fit=crop&auto=format`}
           srcSet={`${image}?w=248&fit=crop&auto=format&dpr=2 2x`}

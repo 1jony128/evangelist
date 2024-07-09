@@ -6,7 +6,7 @@ interface FooterProps {
 
 }
 
-const Footer: FC<FooterProps> = ({}) => {
+const Footer: FC<FooterProps> = () => {
     return (
         <Stack
           flexDirection={'column'}
@@ -20,7 +20,7 @@ const Footer: FC<FooterProps> = ({}) => {
           ОГРН 1112300001692
           </Typography>
           <Typography>
-          Менеджер Михаил <a href="tel:+79002515333">+7 900 251-53-33</a>
+          Менеджер Михаил <a href="tel:+79002515333" className={'phone'}>+7 900 251-53-33</a>
           </Typography>
           <Typography>ККОО ЦДП "СОДЕЙСТВИЕ"
           г. Краснодар, ул. Красных Партизан, 105</Typography>
