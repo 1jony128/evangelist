@@ -1,7 +1,5 @@
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import cls from "./index.module.scss";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -21,7 +19,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{p: 3, justifyContent: 'center' }} >
           {children}
         </Box>
       )}

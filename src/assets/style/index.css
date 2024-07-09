@@ -19,8 +19,7 @@ body {
 }
 
 .image_place{
-    width: 90vw;
-    height: 100%;
+    width: 100vw;
     object-fit: contain;
 }
 
@@ -37,6 +36,10 @@ body {
 
 .imageItem{
     align-items: center;
+}
+
+.Boxing{
+    display: flex;
 }
 
 .contact{
